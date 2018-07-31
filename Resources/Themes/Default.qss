@@ -1,0 +1,80 @@
+* {
+    font-family: "微软雅黑";
+}
+
+/*菜单栏*/
+#menubar {
+    background-color: rgb(54, 55, 56);
+}
+#menubar::item {
+    color: rgb(165, 165, 165);
+    padding: 10px 10px;
+}
+#menubar::item {
+    padding: 10px 10px;
+}
+#menubar::item:hover {
+    background-color: rgb(69, 70, 71);
+}
+#menubar::item:selected, #menubar::item:pressed {
+    color: white;
+    background-color: rgb(36, 175, 255);
+}
+
+/*菜单栏中弹出的菜单*/
+#menubar > QMenu {
+    color: rgb(165, 165, 165);
+    background-color: rgb(60, 61, 65);
+}
+/*菜单中的分割线*/
+#menubar > QMenu::separator {
+    height: 2px;
+    background-color: rgb(45, 46, 48);
+}
+#menubar > QMenu::item {
+    padding: 10px 20px;
+}
+/*菜单项被选中(悬停)*/
+#menubar > QMenu::item:selected {
+    color: white;
+    background-color: rgb(36, 175, 255);
+}
+/*菜单项被按下*/
+#menubar > QMenu::item:pressed {
+    color: rgb(220, 220, 220);
+    background-color: rgb(27, 170, 250);
+}
+
+/*标题栏*/
+TitleWidget {
+    min-height: 40px;
+}
+TitleWidget > #labelTitle {
+    color: white;
+}
+TitleWidget > QPushButton {
+    min-height: 40px;
+    max-width: 36px;
+    color: rgb(165, 165, 165);
+    border: none;
+    font-family: "Webdings";
+}
+TitleWidget > QPushButton:hover {
+    background-color: rgb(73, 74, 75);
+}
+TitleWidget > QPushButton:pressed {
+    background-color: rgb(48, 49, 50);
+}
+TitleWidget > #buttonClose:hover {
+    color: white;
+    background-color: rgb(200, 80, 80);
+}
+TitleWidget > #buttonClose:pressed {
+    background-color: rgb(137, 54, 54);
+}
+
+/*状态栏*/
+QStatusBar {
+    color: rgb(165, 165, 165);
+    background-color: rgb(54, 55, 56);
+}
