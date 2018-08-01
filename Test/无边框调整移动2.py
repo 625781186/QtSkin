@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPainter, QPen, QColor, QCursor
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QRubberBand,\
-    QLabel, QApplication, QPushButton
+from PyQt5.QtGui import QPainter, QPen, QColor
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QApplication, QPushButton
+import win32gui
+import win32con
 
 
 # Created on 2018年7月31日
@@ -19,10 +20,6 @@ __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
 
-class AlphaRubberBand(QRubberBand):
-    pass
-
-
 class FramelessWindow(QWidget):
 
     Border = 4
@@ -31,18 +28,14 @@ class FramelessWindow(QWidget):
     def __init__(self, *args, **kwargs):
         super(FramelessWindow, self).__init__(*args, **kwargs)
         self.prePos = None
-        self.direction = 0  # 方向
-        self.isPreview = False  # 预览
-        # 屏幕大小
-        self.ascreenRect = QApplication.instance().desktop().availableGeometry(self)
-        self.screenRect = QApplication.instance().desktop().screenGeometry(self)
         # 跟踪鼠标
         self.setMouseTracking(True)
         # 背景透明
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         # 无边框,任务栏菜单,点击任务栏最小化和还原
-        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint |
-                            Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+#         self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint |
+#                             Qt.WindowSystemMenuHint | Qt.WindowMinimizeButtonHint)
         # 背景透明窗口的布局（嵌入一个有背景的widget）
         layout = QVBoxLayout(self, spacing=0)
         # 设置边距为2用于判断鼠标的形状和调整窗口大小
@@ -57,8 +50,9 @@ class FramelessWindow(QWidget):
         layout.addWidget(self._widget)
         self._layout = QVBoxLayout(self._widget, spacing=0)
         self._layout.setContentsMargins(0, 0, 0, 0)
-        # 橡皮筋（用于拖动调整大小预览）
-        self.alphaRubberBand = AlphaRubberBand(QRubberBand.Rectangle)
+        
+        style = win32gui.GetWindowLong(int(self.winId()), win32con.GWL_STYLE)
+        win32gui.SetWindowLong(int(self.winId()), win32con.GWL_STYLE,style|win32con.WS_THICKFRAME)
 
     def setWidget(self, widget):
         # 添加包含的用户界面
@@ -75,32 +69,13 @@ class FramelessWindow(QWidget):
         super(FramelessWindow, self).mousePressEvent(event)
         if event.button() == Qt.LeftButton:
             self.prePos = event.pos()
-            self.direction = self.changeCursor(event.pos())
-            if self.direction:
-                self.alphaRubberBand.setGeometry(self.geometry())
-                self.alphaRubberBand.show()
-                return  # 不是移动是调整大小
 
     def mouseReleaseEvent(self, event):
         super(FramelessWindow, self).mouseReleaseEvent(event)
         self.prePos = None
-        self.alphaRubberBand.close()
-        if self.isPreview:
-            # 取消预览状态并且设置窗口大小为预览的大小
-            self.isPreview = False
-            rect = self.alphaRubberBand.geometry()
-            if rect.topLeft() == self.ascreenRect.topLeft() and rect.bottomRight() == self.ascreenRect.bottomRight():
-                # 最大化
-                self.showMaximized()
-            else:
-                self.setGeometry(rect)
 
     def mouseMoveEvent(self, event):
         super(FramelessWindow, self).mouseMoveEvent(event)
-        if self.alphaRubberBand.isVisible() and not self.isPreview:
-            # 改变橡皮筋窗口大小
-            print(event.pos() - self.prePos, self.direction)
-            return
         if not self.prePos:
             # 改变鼠标样式
             self.changeCursor(event.pos())
@@ -110,36 +85,6 @@ class FramelessWindow(QWidget):
             return
         pos = event.pos() - self.prePos
         self.move(self.x() + pos.x(), self.y() + pos.y())
-
-        # 鼠标位置
-        mpos = QCursor.pos()
-        print(mpos, self.screenRect)
-        self.isPreview = True
-        if mpos.isNull():
-            print('左上角')
-        elif mpos.x() == self.screenRect.width() - 1 and mpos.y() == self.screenRect.height() - 1:
-            print('右下角')
-        elif mpos.x() == 0 and mpos.y() == self.screenRect.height() - 1:
-            print('左下角')
-        elif mpos.x() == 0:
-            # 左边
-            self.alphaRubberBand.setGeometry(
-                0, 0, int(self.ascreenRect.width() / 2), self.ascreenRect.height())
-            self.alphaRubberBand.show()
-        elif mpos.x() == self.screenRect.width() - 1:
-            # 右边
-            self.alphaRubberBand.setGeometry(
-                int(self.ascreenRect.width() / 2), 0,
-                int(self.ascreenRect.width() / 2), self.ascreenRect.height())
-            self.alphaRubberBand.show()
-        elif mpos.y() == 0:
-            # 上边
-            self.alphaRubberBand.setGeometry(self.ascreenRect)
-            self.alphaRubberBand.show()
-        else:
-            self.isPreview = False
-            self.alphaRubberBand.setGeometry(self.rect())
-            self.alphaRubberBand.close()
 
     def changeCursor(self, pos):
         x, y, w, h = pos.x(), pos.y(), self.width(), self.height()
