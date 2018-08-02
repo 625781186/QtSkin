@@ -1,4 +1,5 @@
 * {
+    color: rgb(165, 165, 165);
     font-family: "微软雅黑";
 }
 
@@ -6,16 +7,15 @@
 #menubar {
     background-color: rgb(54, 55, 56);
 }
-#menubar::item {
-    color: rgb(165, 165, 165);
-    padding: 10px 10px;
-}
+/*上下左右边距*/
 #menubar::item {
     padding: 10px 10px;
 }
+/*鼠标悬停背景颜色*/
 #menubar::item:hover {
     background-color: rgb(69, 70, 71);
 }
+/*选中效果*/
 #menubar::item:selected, #menubar::item:pressed {
     color: white;
     background-color: rgb(36, 175, 255);
@@ -49,9 +49,11 @@
 TitleWidget {
     min-height: 40px;
 }
+/*标题栏中间文字*/
 TitleWidget > #labelTitle {
-    color: white;
+    font-weight: bold;
 }
+/*标题栏右侧工具按钮*/
 TitleWidget > QPushButton {
     min-height: 40px;
     max-width: 36px;
@@ -65,6 +67,7 @@ TitleWidget > QPushButton:hover {
 TitleWidget > QPushButton:pressed {
     background-color: rgb(48, 49, 50);
 }
+/*关闭按钮*/
 TitleWidget > #buttonClose:hover {
     color: white;
     background-color: rgb(200, 80, 80);
@@ -73,8 +76,101 @@ TitleWidget > #buttonClose:pressed {
     background-color: rgb(137, 54, 54);
 }
 
-/*状态栏*/
+/*首页、我的项目页面*/
+#widgetHome, #listWidgetProjects {
+    background-color: rgb(35, 35, 36);
+}
+/*去掉item虚线边框*/
+#listWidgetProjects {
+    outline: 0px;
+}
+/*我的项目、创建项目的面板背景*/
+#widgetMyProject {
+    background-color: rgb(44, 45, 46);
+}
+/*创建项目按钮*/
+#buttonAddProject {
+    border: none;
+    border-radius: 4px;
+    padding: 0px 10px;
+    color: white;
+    font-family: "qtskin";
+    background-color: rgb(36, 175, 255);
+}
+#buttonAddProject:pressed {
+    background-color: rgb(34, 168, 245);
+}
+
+/*项目数量、排序按钮背景面板底部 渐变边框(左右两头有缩进)*/
+#widgetProjectCount {
+    border-bottom: 2px solid qlineargradient(spread:reflect, x1:0.5, y1:0.5, x2:1, y2:0.5, stop:0.95 rgba(48, 48, 49, 255), stop:1 rgba(35, 35, 36, 255));
+}
+/*排序按钮*/
+#buttonSortTime, #buttonSortAz {
+    border: none;
+    font: 15pt "qtskin";
+    color: rgb(122, 125, 128);
+    background-color: transparent;
+}
+#buttonSortTime:checked, #buttonSortAz:checked {
+    color: rgb(171, 175, 179);
+}
+#buttonSortTime:hover, #buttonSortAz:hover {
+    color: rgb(147, 150, 153);
+}
+#buttonSortTime:pressed, #buttonSortAz:pressed {
+    color: rgb(97, 99, 102);
+}
+
+/*底部进度条*/
+#progressBar {
+    border: none;
+    background-color: transparent;
+}
+#progressBar::chunk {
+    background-color: rgb(36, 175, 255);
+}
+
+/*底部状态栏*/
 QStatusBar {
     color: rgb(165, 165, 165);
     background-color: rgb(54, 55, 56);
+}
+
+/*很细的竖向滚动条*/
+#rightScrollBar:vertical {
+    border: none;
+    background-color: transparent;
+    min-width: 8px;
+    max-width: 8px;
+    margin: 0px 0px 0px 0px;
+}
+#rightScrollBar::add-page:vertical, #rightScrollBar::sub-page:vertical {
+    background: none;
+}
+#rightScrollBar::handle:vertical {
+    background-color: rgb(68, 68, 68);
+    min-width: 8px;
+    max-width: 8px;
+    border-radius: 4px;
+}
+#rightScrollBar::handle:vertical:hover {
+    background-color: rgb(92, 92, 92);
+}
+#rightScrollBar::handle:vertical:pressed {
+    background-color: rgb(77, 77, 77);
+}
+#rightScrollBar::add-line:vertical {
+    border: none;
+    background: transparent;
+    height: 0px;
+    subcontrol-position: bottom;
+    subcontrol-origin: margin;
+}
+#rightScrollBar::sub-line:vertical {
+    border: none;
+    background: transparent;
+    height: 0px;
+    subcontrol-position: top;
+    subcontrol-origin: margin;
 }

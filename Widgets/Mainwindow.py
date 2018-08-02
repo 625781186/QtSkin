@@ -37,6 +37,11 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.titleWidget.doubleClicked.connect(self.doNormalOrMaxed)
         self.titleWidget.windowMoved.connect(self.doMoveWindow)
         layout.addWidget(self.titleWidget)
+        
+        #设置listWidgetProjects的代理滚动
+        self.listWidgetProjects.setVerticalScrollBar(self.rightScrollBar)
+        #由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
+        self.horizontalLayout.addWidget(self.rightScrollBar)
 
     def doMoveWindow(self, pos):
         if self.isMaximized() or self.isFullScreen():
@@ -55,9 +60,13 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     import sys
     from PyQt5.QtWidgets import QApplication
+    from PyQt5.QtGui import QFontDatabase
     from Utils.Tools import readData
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../Resources/Themes/Default.qss'))
+    QFontDatabase.addApplicationFont('../Resources/qtskin.ttf')
     w = Mainwindow()
     w.show()
+    w.progressBar.setValue(50)
+    w.listWidgetProjects.addItems([str(i) for i in range(1000)])
     sys.exit(app.exec_())
