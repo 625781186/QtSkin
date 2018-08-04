@@ -314,37 +314,30 @@
     <property name="title">
      <string>Project</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
     <addaction name="separator"/>
-    <addaction name="action_4"/>
-    <addaction name="action_12"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveas"/>
     <addaction name="separator"/>
     <addaction name="action_14"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="action_10"/>
-    <addaction name="action_11"/>
-   </widget>
-   <widget class="QMenu" name="menu_3">
-    <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="action_5"/>
-    <addaction name="action_9"/>
-    <addaction name="action_6"/>
+    <addaction name="actionWebsite"/>
+    <addaction name="actionFeedback"/>
+    <addaction name="actionUpdate"/>
     <addaction name="separator"/>
-    <addaction name="action_soft"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
+  <action name="actionNew">
    <property name="text">
     <string>New Project</string>
    </property>
@@ -358,7 +351,7 @@
     <string>Ctrl+N</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="actionOpen">
    <property name="text">
     <string>Open Project</string>
    </property>
@@ -369,7 +362,7 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="actionSave">
    <property name="text">
     <string>Save Project</string>
    </property>
@@ -380,7 +373,7 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="actionWebsite">
    <property name="text">
     <string>Website</string>
    </property>
@@ -388,7 +381,7 @@
     <string>Welcome to visit http://PyQt5.com</string>
    </property>
   </action>
-  <action name="action_6">
+  <action name="actionUpdate">
    <property name="text">
     <string>Update</string>
    </property>
@@ -404,7 +397,7 @@
     <string>Common problem</string>
    </property>
   </action>
-  <action name="action_9">
+  <action name="actionFeedback">
    <property name="text">
     <string>Feedback</string>
    </property>
@@ -412,7 +405,7 @@
     <string>ヾ(=ﾟ･ﾟ=)ﾉ♪Submit Feedback</string>
    </property>
   </action>
-  <action name="action_soft">
+  <action name="actionAbout">
    <property name="text">
     <string>About Soft</string>
    </property>
@@ -420,7 +413,7 @@
     <string>About the Software</string>
    </property>
   </action>
-  <action name="action_10">
+  <action name="actionUndo">
    <property name="text">
     <string>Undo</string>
    </property>
@@ -431,7 +424,7 @@
     <string>Ctrl+Z</string>
    </property>
   </action>
-  <action name="action_11">
+  <action name="actionRedo">
    <property name="text">
     <string>Redo</string>
    </property>
@@ -442,7 +435,7 @@
     <string>Ctrl+Y</string>
    </property>
   </action>
-  <action name="action_12">
+  <action name="actionSaveas">
    <property name="text">
     <string>Save As Project</string>
    </property>
@@ -462,6 +455,14 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+   <property name="statusTip">
+    <string>About Qt</string>
    </property>
   </action>
  </widget>

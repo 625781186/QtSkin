@@ -9,10 +9,13 @@ Created on 2018年7月16日
 @file: Widgets.Mainwindow
 @description: 
 """
+import webbrowser
+
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QMainWindow, QHBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
 
 from UiFiles.Ui_MainWindow import Ui_MainWindow
+from Widgets.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget
 
 
@@ -30,6 +33,11 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
 
+        self.initTitleBar()
+        self.initProjects()
+        self.initStatusbar()
+
+    def initTitleBar(self):
         # 在菜单中添加自定义的标题栏
         layout = QHBoxLayout(self.menubar, spacing=0)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -37,11 +45,35 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.titleWidget.doubleClicked.connect(self.doNormalOrMaxed)
         self.titleWidget.windowMoved.connect(self.doMoveWindow)
         layout.addWidget(self.titleWidget)
-        
-        #设置listWidgetProjects的代理滚动
+
+    def initProjects(self):
+        # 设置listWidgetProjects的代理滚动
         self.listWidgetProjects.setVerticalScrollBar(self.rightScrollBar)
-        #由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
+        # 由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
         self.horizontalLayout.addWidget(self.rightScrollBar)
+        #两个排序按钮放入一个组中
+        btnGroup = QButtonGroup(self)
+        btnGroup.addButton(self.buttonSortTime)
+        btnGroup.addButton(self.buttonSortAz)
+
+    def initStatusbar(self):
+        # 底部状态栏
+        self.statusbar.addPermanentWidget(  # 主页按钮
+            QPushButton('', self, objectName='buttonHome',
+                        statusTip=self.tr('visit home page'),
+                        clicked=self.doVisitHome))
+        # 分享按钮
+        self.buttonShare = QPushButton(
+            '', self, objectName='buttonShare',
+            statusTip=self.tr('share QtSkin to friends'))
+        self.statusbar.addPermanentWidget(self.buttonShare)
+        # 分享菜单
+        self.shareMenu = ShareMenu(self.tr('Share'), self.buttonShare)
+        self.buttonShare.clicked.connect(self.shareMenu.exec_)
+
+    def doVisitHome(self):
+        # 访问主页
+        webbrowser.open_new_tab('https://github.com/892768447/QtSkin')
 
     def doMoveWindow(self, pos):
         if self.isMaximized() or self.isFullScreen():

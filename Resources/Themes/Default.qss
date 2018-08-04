@@ -75,6 +75,21 @@ TitleWidget > #buttonClose:hover {
 TitleWidget > #buttonClose:pressed {
     background-color: rgb(137, 54, 54);
 }
+/*登录按钮*/
+#buttonLogin {
+    max-width: 40px;
+    color: rgb(36, 175, 255);
+    border: none;
+    font-family: "qtskin";
+}
+#buttonLogin:hover {
+    color: rgb(65, 197, 244);
+    background-color: rgb(54, 55, 56);
+}
+#buttonLogin:pressed {
+    color: rgb(9, 140, 216);
+    background-color: rgb(54, 55, 56);
+}
 
 /*首页、我的项目页面*/
 #widgetHome, #listWidgetProjects {
@@ -122,21 +137,6 @@ TitleWidget > #buttonClose:pressed {
     color: rgb(97, 99, 102);
 }
 
-/*底部进度条*/
-#progressBar {
-    border: none;
-    background-color: transparent;
-}
-#progressBar::chunk {
-    background-color: rgb(36, 175, 255);
-}
-
-/*底部状态栏*/
-QStatusBar {
-    color: rgb(165, 165, 165);
-    background-color: rgb(54, 55, 56);
-}
-
 /*很细的竖向滚动条*/
 #rightScrollBar:vertical {
     border: none;
@@ -173,4 +173,42 @@ QStatusBar {
     height: 0px;
     subcontrol-position: top;
     subcontrol-origin: margin;
+}
+
+/*底部进度条*/
+#progressBar {
+    border: none;
+    background-color: rgb(35, 35, 36);
+}
+#progressBar::chunk {
+    background-color: rgb(36, 175, 255);
+}
+
+/*底部状态栏*/
+QStatusBar {
+    color: rgb(165, 165, 165);
+    background-color: rgb(54, 55, 56);
+}
+
+/*右侧控件item,去掉边框*/
+QStatusBar::item {
+    border: none;
+}
+
+/*底部状态栏右下角按钮*/
+#buttonHome, #buttonShare {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: 24px;
+    max-height: 24px;
+    border: none;
+    font-weight: bold;
+    font-family: "qtskin";
+    background-color: transparent;
+}
+#buttonHome:hover, #buttonShare:hover {
+    background-color: rgb(73, 74, 75);
+}
+#buttonHome:pressed, #buttonShare:pressed {
+    background-color: rgb(48, 49, 50);
 }

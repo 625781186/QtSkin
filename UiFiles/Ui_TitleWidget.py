@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_TitleWidget(object):
     def setupUi(self, TitleWidget):
         TitleWidget.setObjectName("TitleWidget")
-        TitleWidget.resize(643, 28)
+        TitleWidget.resize(699, 28)
         self.horizontalLayout = QtWidgets.QHBoxLayout(TitleWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
@@ -24,6 +24,9 @@ class Ui_TitleWidget(object):
         self.horizontalLayout.addWidget(self.labelTitle)
         spacerItem1 = QtWidgets.QSpacerItem(92, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
+        self.buttonLogin = QtWidgets.QPushButton(TitleWidget)
+        self.buttonLogin.setObjectName("buttonLogin")
+        self.horizontalLayout.addWidget(self.buttonLogin)
         self.buttonMin = QtWidgets.QPushButton(TitleWidget)
         self.buttonMin.setObjectName("buttonMin")
         self.horizontalLayout.addWidget(self.buttonMin)
@@ -41,6 +44,7 @@ class Ui_TitleWidget(object):
         _translate = QtCore.QCoreApplication.translate
         TitleWidget.setWindowTitle(_translate("TitleWidget", "TitleWidget"))
         self.labelTitle.setText(_translate("TitleWidget", "Qt Skin Designer"))
+        self.buttonLogin.setText(_translate("TitleWidget", "Login"))
         self.buttonMin.setText(_translate("TitleWidget", "0"))
         self.buttonNorMax.setText(_translate("TitleWidget", "1"))
         self.buttonClose.setText(_translate("TitleWidget", "r"))
