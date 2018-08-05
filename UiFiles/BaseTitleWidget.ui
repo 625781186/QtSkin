@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>TitleWidget</class>
- <widget class="QWidget" name="TitleWidget">
+ <class>BaseTitleWidget</class>
+ <widget class="QWidget" name="BaseTitleWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
+    <width>513</width>
     <height>28</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>TitleWidget</string>
+   <string>BaseTitleWidget</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
@@ -48,7 +48,7 @@
    <item>
     <widget class="QLabel" name="labelTitle">
      <property name="text">
-      <string>Qt Skin Designer</string>
+      <string/>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -70,56 +70,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item>
-    <widget class="QPushButton" name="buttonLogin">
-     <property name="text">
-      <string>Login</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="Line" name="lineLogin">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="lineWidth">
-      <number>2</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <spacer name="horizontalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>3</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <widget class="QPushButton" name="buttonMin">
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="buttonNorMax">
-     <property name="text">
-      <string>1</string>
-     </property>
-    </widget>
    </item>
    <item>
     <widget class="QPushButton" name="buttonClose">

@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+encoding//UiFiles/Ui_LoginWidget.py=utf-8
 encoding//UiFiles/Ui_MainWindow.py=utf-8
 encoding//UiFiles/Ui_TitleWidget.py=utf-8
 encoding//Utils/Tools.py=utf-8
+encoding//Widgets/BaseTitleWidget.py=utf-8
+encoding//Widgets/LoginWidget.py=utf-8
 encoding//Widgets/Mainwindow.py=utf-8
 encoding//Widgets/ShareMenu.py=utf-8
 encoding//Widgets/TitleWidget.py=utf-8

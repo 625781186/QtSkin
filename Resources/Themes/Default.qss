@@ -54,32 +54,31 @@ TitleWidget > #labelTitle {
     font-weight: bold;
 }
 /*标题栏右侧工具按钮*/
-TitleWidget > QPushButton {
+TitleWidget > QPushButton, BaseTitleWidget > QPushButton {
     min-height: 40px;
     max-width: 36px;
     color: rgb(165, 165, 165);
     border: none;
     font-family: "Webdings";
 }
-TitleWidget > QPushButton:hover {
+TitleWidget > QPushButton:hover, BaseTitleWidget > QPushButton:hover {
     background-color: rgb(73, 74, 75);
 }
-TitleWidget > QPushButton:pressed {
+TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
     background-color: rgb(48, 49, 50);
 }
 /*关闭按钮*/
-TitleWidget > #buttonClose:hover {
+#buttonClose:hover {
     color: white;
     background-color: rgb(200, 80, 80);
 }
-TitleWidget > #buttonClose:pressed {
+#buttonClose:pressed {
     background-color: rgb(137, 54, 54);
 }
 /*登录按钮*/
 #buttonLogin {
-    max-width: 40px;
+    max-width: 60px;
     color: rgb(36, 175, 255);
-    border: none;
     font-family: "qtskin";
 }
 #buttonLogin:hover {
@@ -89,6 +88,11 @@ TitleWidget > #buttonClose:pressed {
 #buttonLogin:pressed {
     color: rgb(9, 140, 216);
     background-color: rgb(54, 55, 56);
+}
+#lineLogin {
+    color: rgb(45, 46, 48);
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 /*首页、我的项目页面*/

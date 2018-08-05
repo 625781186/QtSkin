@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_TitleWidget(object):
     def setupUi(self, TitleWidget):
         TitleWidget.setObjectName("TitleWidget")
-        TitleWidget.resize(699, 28)
+        TitleWidget.resize(798, 28)
         self.horizontalLayout = QtWidgets.QHBoxLayout(TitleWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
@@ -27,6 +27,14 @@ class Ui_TitleWidget(object):
         self.buttonLogin = QtWidgets.QPushButton(TitleWidget)
         self.buttonLogin.setObjectName("buttonLogin")
         self.horizontalLayout.addWidget(self.buttonLogin)
+        self.lineLogin = QtWidgets.QFrame(TitleWidget)
+        self.lineLogin.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.lineLogin.setLineWidth(2)
+        self.lineLogin.setFrameShape(QtWidgets.QFrame.VLine)
+        self.lineLogin.setObjectName("lineLogin")
+        self.horizontalLayout.addWidget(self.lineLogin)
+        spacerItem2 = QtWidgets.QSpacerItem(3, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem2)
         self.buttonMin = QtWidgets.QPushButton(TitleWidget)
         self.buttonMin.setObjectName("buttonMin")
         self.horizontalLayout.addWidget(self.buttonMin)
