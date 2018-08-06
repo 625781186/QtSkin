@@ -96,11 +96,11 @@ TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
 }
 
 /*首页、我的项目页面*/
-#widgetHome, #listWidgetProjects {
+#widgetHome, #listViewProjects {
     background-color: rgb(35, 35, 36);
 }
 /*去掉item虚线边框*/
-#listWidgetProjects {
+#listViewProjects {
     outline: 0px;
 }
 /*我的项目、创建项目的面板背景*/
@@ -143,8 +143,7 @@ TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
 
 /*项目主页每个item的样式*/
 ProjectItemWidget {
-    font-family: "qtskin";
-    font-size: 100px;
+    background-color: rgb(73, 75, 77);
 }
 #buttonDelete {
     min-width: 30px;
@@ -162,6 +161,17 @@ ProjectItemWidget {
 }
 #buttonDelete:pressed {
     background-color: rgb(14, 15, 15);
+}
+#labelEmpty {
+    font-family: "qtskin";
+    font-size: 100px;
+    margin: 12px;
+    border: 2px dashed rgb(165, 165, 165);
+    border-radius: 4px;
+}
+/*项目Item底部黑色*/
+ProjectItemWidget > #widgetBottom {
+    background-color: rgba(14, 15, 15, 200);
 }
 
 /*很细的竖向滚动条*/

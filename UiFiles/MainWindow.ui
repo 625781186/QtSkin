@@ -229,12 +229,15 @@
             </spacer>
            </item>
            <item>
-            <widget class="QListWidget" name="listWidgetProjects">
+            <widget class="QListView" name="listViewProjects">
              <property name="frameShape">
               <enum>QFrame::NoFrame</enum>
              </property>
              <property name="horizontalScrollBarPolicy">
               <enum>Qt::ScrollBarAlwaysOff</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::NoEditTriggers</set>
              </property>
              <property name="flow">
               <enum>QListView::LeftToRight</enum>
@@ -244,6 +247,9 @@
              </property>
              <property name="resizeMode">
               <enum>QListView::Adjust</enum>
+             </property>
+             <property name="spacing">
+              <number>30</number>
              </property>
             </widget>
            </item>

@@ -9,12 +9,16 @@ Created on 2018年7月16日
 @file: Widgets.Mainwindow
 @description: 
 """
+from datetime import datetime
 import webbrowser
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSlot
+from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
 
+from Core.SortFilterProxyModel import SortFilterProxyModel
 from UiFiles.Ui_MainWindow import Ui_MainWindow
+from Widgets.Items.ProjectItemWidget import ProjectItemWidget
 from Widgets.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget
 
@@ -37,6 +41,20 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.initProjects()
         self.initStatusbar()
 
+    @pyqtSlot()
+    def on_buttonAddProject_clicked(self):
+        """添加项目"""
+        name = 'name-'
+        time = datetime.now().strftime('%Y/%m/%d')
+        item = QStandardItem(name + time)
+        self.projectModel.appendRow(item)
+        index = self.filterProjectModel.mapFromSource(item.index())
+        widget = ProjectItemWidget(self.listViewProjects)
+        widget.setName(name)
+        widget.setTime(time)
+        item.setSizeHint(widget.size())
+        self.listViewProjects.setIndexWidget(index, widget)
+
     def initTitleBar(self):
         # 在菜单中添加自定义的标题栏
         layout = QHBoxLayout(self.menubar, spacing=0)
@@ -47,14 +65,20 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         layout.addWidget(self.titleWidget)
 
     def initProjects(self):
-        # 设置listWidgetProjects的代理滚动
-        self.listWidgetProjects.setVerticalScrollBar(self.rightScrollBar)
+        # 设置listViewProjects的代理滚动
+        self.listViewProjects.setVerticalScrollBar(self.rightScrollBar)
         # 由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
         self.horizontalLayout.addWidget(self.rightScrollBar)
-        #两个排序按钮放入一个组中
+        # 两个排序按钮放入一个组中
         btnGroup = QButtonGroup(self)
         btnGroup.addButton(self.buttonSortTime)
         btnGroup.addButton(self.buttonSortAz)
+        # 数据模型
+        self.projectModel = QStandardItemModel(self.listViewProjects)
+        # 排序模型
+        self.filterProjectModel = SortFilterProxyModel(self.listViewProjects)
+        self.filterProjectModel.setSourceModel(self.projectModel)
+        self.listViewProjects.setModel(self.filterProjectModel)
 
     def initStatusbar(self):
         # 底部状态栏
@@ -100,5 +124,4 @@ if __name__ == '__main__':
     w = Mainwindow()
     w.show()
     w.progressBar.setValue(50)
-    w.listWidgetProjects.addItems([str(i) for i in range(1000)])
     sys.exit(app.exec_())

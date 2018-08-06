@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\MainWindow.ui'
+# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\MainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.2
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -75,14 +75,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem2 = QtWidgets.QSpacerItem(125, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
-        self.listWidgetProjects = QtWidgets.QListWidget(self.widget_2)
-        self.listWidgetProjects.setFrameShape(QtWidgets.QFrame.NoFrame)
-        self.listWidgetProjects.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.listWidgetProjects.setFlow(QtWidgets.QListView.LeftToRight)
-        self.listWidgetProjects.setProperty("isWrapping", True)
-        self.listWidgetProjects.setResizeMode(QtWidgets.QListView.Adjust)
-        self.listWidgetProjects.setObjectName("listWidgetProjects")
-        self.horizontalLayout.addWidget(self.listWidgetProjects)
+        self.listViewProjects = QtWidgets.QListView(self.widget_2)
+        self.listViewProjects.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.listViewProjects.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.listViewProjects.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.listViewProjects.setFlow(QtWidgets.QListView.LeftToRight)
+        self.listViewProjects.setProperty("isWrapping", True)
+        self.listViewProjects.setResizeMode(QtWidgets.QListView.Adjust)
+        self.listViewProjects.setObjectName("listViewProjects")
+        self.horizontalLayout.addWidget(self.listViewProjects)
         spacerItem3 = QtWidgets.QSpacerItem(125, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem3)
         self.rightScrollBar = QtWidgets.QScrollBar(self.widget_2)

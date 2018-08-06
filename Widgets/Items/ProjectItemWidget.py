@@ -9,6 +9,7 @@ Created on 2018年8月6日
 @file: Widgets.Items.ProjectItemWidget
 @description: 
 """
+
 from PyQt5.QtWidgets import QLabel
 
 from UiFiles.Ui_ProjectItemWidget import Ui_ProjectItemWidget
@@ -26,6 +27,39 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
     def __init__(self, *args, **kwargs):
         super(ProjectItemWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
+        # 隐藏删除按钮
+        self.buttonDelete.setVisible(False)
+
+    def setName(self, name):
+        """
+        :param name: 项目名称
+        """
+        self.labelName.setText(name)
+        return self
+
+    def setTime(self, time):
+        """
+        :param time: 修改时间
+        """
+        self.labelTime.setText(time)
+        return self
+
+    def showEmpty(self, show=True):
+        """
+        :param show: 显示空项目文字
+        """
+        self.labelEmpty.setVisible(show)
+        return self
+
+    def enterEvent(self, event):
+        """鼠标进入时显示删除按钮"""
+        super(ProjectItemWidget, self).enterEvent(event)
+        self.buttonDelete.setVisible(True)
+
+    def leaveEvent(self, event):
+        """鼠标离开时隐藏删除按钮"""
+        super(ProjectItemWidget, self).leaveEvent(event)
+        self.buttonDelete.setVisible(False)
 
 
 if __name__ == '__main__':
@@ -38,4 +72,5 @@ if __name__ == '__main__':
     QFontDatabase.addApplicationFont('../../Resources/qtskin.ttf')
     w = ProjectItemWidget()
     w.show()
+    w.setName('test').setTime('2017/08/06')
     sys.exit(app.exec_())
