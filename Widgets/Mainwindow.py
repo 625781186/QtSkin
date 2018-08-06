@@ -9,12 +9,13 @@ Created on 2018年7月16日
 @file: Widgets.Mainwindow
 @description: 
 """
-import webbrowser
-
+import webbrowser 
+#import sys 
+#sys.path.append("...")
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
 
-from UiFiles.Ui_MainWindow import Ui_MainWindow
+from QtSkin.UiFiles.Ui_MainWindow import Ui_MainWindow
 from Widgets.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget
 

@@ -12,7 +12,7 @@ Created on 2018年7月16日
 
 from PyQt5.QtCore import pyqtSignal, QPoint, Qt
 from PyQt5.QtWidgets import QWidget
-from UiFiles.Ui_BaseTitleWidget import Ui_BaseTitleWidget
+from ..UiFiles.Ui_BaseTitleWidget import Ui_BaseTitleWidget
 
 
 __Author__ = """By: Irony
