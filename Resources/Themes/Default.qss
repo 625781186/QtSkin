@@ -161,7 +161,7 @@ ProjectItemWidget {
     font-family: "qtskin";
     font-size: 80px;
     border-radius: 6px;
-    margin: 2px; /*让控件整体往内部缩进2px*/
+    margin: 4px; /*让控件整体往内部缩进4px*/
     background-color: rgb(73, 75, 77);
 }
 #buttonDelete {
