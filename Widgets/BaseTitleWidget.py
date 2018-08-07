@@ -12,6 +12,7 @@ Created on 2018年7月16日
 
 from PyQt5.QtCore import pyqtSignal, QPoint, Qt
 from PyQt5.QtWidgets import QWidget
+
 from UiFiles.Ui_BaseTitleWidget import Ui_BaseTitleWidget
 
 
@@ -25,11 +26,14 @@ __Version__ = "Version 1.0"
 class BaseTitleWidget(QWidget, Ui_BaseTitleWidget):
 
     windowMoved = pyqtSignal(QPoint)
+    windowClosed = pyqtSignal()
 
     def __init__(self, *args, **kwargs):
         super(BaseTitleWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
+        # 关闭按钮传递关闭信号
+        self.buttonClose.clicked.connect(self.windowClosed.emit)
         self.prePos = None
 
     def mousePressEvent(self, event):

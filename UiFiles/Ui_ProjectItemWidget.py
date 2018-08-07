@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\ProjectItemWidget.ui'
+# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\ProjectItemWidget.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.2
+# Created by: PyQt5 UI code generator 5.10.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -60,7 +60,7 @@ class Ui_ProjectItemWidget(object):
     def retranslateUi(self, ProjectItemWidget):
         _translate = QtCore.QCoreApplication.translate
         ProjectItemWidget.setWindowTitle(_translate("ProjectItemWidget", "ProjectItemWidget"))
-        ProjectItemWidget.setText(_translate("ProjectItemWidget", ""))
+        ProjectItemWidget.setText(_translate("ProjectItemWidget", ""))
         self.buttonDelete.setText(_translate("ProjectItemWidget", ""))
 
 

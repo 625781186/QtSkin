@@ -121,7 +121,7 @@ if __name__ == '__main__':
     from Utils.Tools import readData
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../Resources/Themes/Default.qss'))
-    QFontDatabase.addApplicationFont('../Resources/qtskin.ttf')
+    QFontDatabase.addApplicationFont('../Resources/Fonts/qtskin.ttf')
     w = Mainwindow()
     w.show()
     w.progressBar.setValue(50)

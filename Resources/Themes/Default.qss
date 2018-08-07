@@ -48,17 +48,36 @@
 /*标题栏*/
 TitleWidget {
     min-height: 40px;
+    background-color: rgb(54, 55, 56);
+}
+BaseTitleWidget {
+    min-height: 28px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background-color: rgb(54, 55, 56);
 }
 /*标题栏中间文字*/
-TitleWidget > #labelTitle {
+TitleWidget > #labelTitle, BaseTitleWidget > #labelTitle {
     font-weight: bold;
 }
 /*标题栏右侧工具按钮*/
-TitleWidget > QPushButton, BaseTitleWidget > QPushButton {
+TitleWidget > QPushButton {
     min-height: 40px;
     max-width: 36px;
     color: rgb(165, 165, 165);
     border: none;
+    font-size: 12pt;
+    font-family: "Webdings";
+}
+BaseTitleWidget > QPushButton {
+    min-width: 28px;
+    max-width: 28px;
+    min-height: 28px;
+    max-height: 28px;
+    color: rgb(165, 165, 165);
+    border: none;
+    border-top-right-radius: 4px;
+    font-size: 12pt;
     font-family: "Webdings";
 }
 TitleWidget > QPushButton:hover, BaseTitleWidget > QPushButton:hover {
@@ -68,31 +87,76 @@ TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
     background-color: rgb(48, 49, 50);
 }
 /*关闭按钮*/
-#buttonClose:hover {
+TitleWidget > #buttonClose:hover, BaseTitleWidget > #buttonClose:hover {
     color: white;
     background-color: rgb(200, 80, 80);
 }
-#buttonClose:pressed {
+TitleWidget > #buttonClose:pressed, BaseTitleWidget > #buttonClose:pressed {
     background-color: rgb(137, 54, 54);
 }
-/*登录按钮*/
-#buttonLogin {
+/*标题栏登录按钮*/
+TitleWidget > #buttonLogin {
     max-width: 60px;
     color: rgb(36, 175, 255);
     font-family: "qtskin";
 }
-#buttonLogin:hover {
+TitleWidget > #buttonLogin:hover {
     color: rgb(65, 197, 244);
     background-color: rgb(54, 55, 56);
 }
-#buttonLogin:pressed {
+TitleWidget > #buttonLogin:pressed {
     color: rgb(9, 140, 216);
     background-color: rgb(54, 55, 56);
 }
-#lineLogin {
+TitleWidget > #lineLogin {
     color: rgb(45, 46, 48);
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+/*登录对话框*/
+LoginWidget > #loginWidgetBg {
+    border-radius: 4px;
+    background-color: rgb(44, 45, 46);
+}
+#labelHead {
+    font-size: 80px;
+    font-family: "qtskin";
+}
+#labelNotice {
+    font-size: 10pt;
+    font-family: "qtskin";
+    color: red;
+}
+#editUsername, #editPassword {
+    padding: 0px 0px 0px 8px;  /*上右下左*/
+    border-radius: 4px;
+    border: 1px solid transparent; /*透明边框*/
+    background-color: rgb(25, 25, 26);
+    selection-color: black; /*选中文字的颜色*/
+    selection-background-color: rgb(181, 213, 255); /*选中文字背景色*/
+}
+#editUsername:focus, #editPassword:focus {
+    border-radius: 4px;
+    border: 1px solid rgb(36, 175, 255);
+}
+QLineEdit {
+    lineedit-password-character: 42;  /*星号*/
+}
+#editPassword {
+    padding: 0px 8px;  /*上下0 左右8*/
+}
+
+#loginWidgetEdit > #buttonLogin {
+    color: white;
+    border-radius: 4px;
+    background-color: rgb(36, 175, 255);
+}
+#loginWidgetEdit > #buttonLogin:hover {
+    background-color: rgb(58, 183, 255);
+}
+#loginWidgetEdit > #buttonLogin:pressed {
+    background-color: rgb(34, 168, 245);
 }
 
 /*首页、我的项目页面*/
