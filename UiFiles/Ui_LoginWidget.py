@@ -19,6 +19,7 @@ class Ui_LoginWidget(object):
         self.loginWidgetBg = QtWidgets.QWidget(LoginWidget)
         self.loginWidgetBg.setMinimumSize(QtCore.QSize(310, 400))
         self.loginWidgetBg.setMaximumSize(QtCore.QSize(310, 400))
+        self.loginWidgetBg.setProperty("active", True)
         self.loginWidgetBg.setObjectName("loginWidgetBg")
         self.gridLayout = QtWidgets.QGridLayout(self.loginWidgetBg)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)

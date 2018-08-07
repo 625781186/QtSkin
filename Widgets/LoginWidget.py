@@ -3,6 +3,7 @@
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
 
+from Core.Dialog import Dialog
 from UiFiles.Ui_LoginWidget import Ui_LoginWidget
 
 
@@ -19,13 +20,15 @@ __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
 
-class LoginWidget(QDialog, Ui_LoginWidget):
+class LoginWidget(QDialog, Ui_LoginWidget, Dialog):
 
     Icon = ''  # 叹号字
 
     def __init__(self, *args, **kwargs):
         super(LoginWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
+        self.loginWidgetBg.setContentsMargins(1, 1, 1, 1)
+        self.BorderWidget = self.loginWidgetBg  # 边框闪烁
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
         self.widgetTitle.windowMoved.connect(self.doMoveWindow)
@@ -53,21 +56,19 @@ class LoginWidget(QDialog, Ui_LoginWidget):
         """
         self.labelNotice.setText(self.Icon + ' ' + msg)
 
-    def doMoveWindow(self, pos):
-        if self.isMaximized() or self.isFullScreen():
-            return
-        # 移动窗口
-        self.move(self.x() + pos.x(), self.y() + pos.y())
-
 
 if __name__ == '__main__':
     import sys
-    from PyQt5.QtWidgets import QApplication
+    import cgitb
+    sys.excepthook = cgitb.Hook(1, None, 5, sys.stderr, 'text')
+    from PyQt5.QtWidgets import QApplication, QWidget
     from PyQt5.QtGui import QFontDatabase
     from Utils.Tools import readData
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../Resources/Themes/Default.qss'))
     QFontDatabase.addApplicationFont('../Resources/Fonts/qtskin.ttf')
-    w = LoginWidget()
-    w.show()
+    ww = QWidget()
+    ww.show()
+    w = LoginWidget(ww)
+    w.exec_()
     sys.exit(app.exec_())

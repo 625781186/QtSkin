@@ -43,6 +43,9 @@
        <height>400</height>
       </size>
      </property>
+     <property name="active" stdset="0">
+      <bool>true</bool>
+     </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
        <number>0</number>

@@ -119,6 +119,14 @@ LoginWidget > #loginWidgetBg {
     border-radius: 4px;
     background-color: rgb(44, 45, 46);
 }
+/*激活状态*/
+#loginWidgetBg[active="true"] {
+    border: 1px solid rgb(36, 175, 255);
+}
+/*非激活状态*/
+#loginWidgetBg[active="false"] {
+    border: 1px solid transparent; /*透明边框*/
+}
 #labelHead {
     font-size: 80px;
     font-family: "qtskin";
