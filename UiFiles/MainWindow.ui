@@ -204,7 +204,7 @@
             <number>0</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>15</number>
            </property>
            <property name="rightMargin">
             <number>0</number>
@@ -239,6 +239,9 @@
              <property name="editTriggers">
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
+             <property name="tabKeyNavigation">
+              <bool>true</bool>
+             </property>
              <property name="flow">
               <enum>QListView::LeftToRight</enum>
              </property>
@@ -248,8 +251,11 @@
              <property name="resizeMode">
               <enum>QListView::Adjust</enum>
              </property>
-             <property name="spacing">
-              <number>30</number>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+             <property name="selectionRectVisible">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -313,7 +319,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

@@ -10,6 +10,8 @@ Created on 2018年8月6日
 @description: 
 """
 
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QLabel
 
 from UiFiles.Ui_ProjectItemWidget import Ui_ProjectItemWidget
@@ -60,6 +62,19 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
         """鼠标离开时隐藏删除按钮"""
         super(ProjectItemWidget, self).leaveEvent(event)
         self.buttonDelete.setVisible(False)
+
+    def paintEvent(self, event):
+        super(ProjectItemWidget, self).paintEvent(event)
+        pixmap = self.pixmap()
+        if not pixmap or pixmap.isNull():
+            # 画虚线边框
+            painter = QPainter(self)
+            pen = painter.pen()
+            pen.setStyle(Qt.DashLine)
+            pen.setWidth(2)
+            painter.setPen(pen)
+            painter.drawRoundedRect(
+                self.rect().adjusted(20, 20, -20, -20), 4, 4)
 
 
 if __name__ == '__main__':

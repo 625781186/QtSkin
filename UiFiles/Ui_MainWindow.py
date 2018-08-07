@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\MainWindow.ui'
+# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\MainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
         self.widget_2 = QtWidgets.QWidget(self.widgetHome)
         self.widget_2.setObjectName("widget_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget_2)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setContentsMargins(0, 15, 0, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem2 = QtWidgets.QSpacerItem(125, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
@@ -79,9 +79,12 @@ class Ui_MainWindow(object):
         self.listViewProjects.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.listViewProjects.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.listViewProjects.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.listViewProjects.setTabKeyNavigation(True)
         self.listViewProjects.setFlow(QtWidgets.QListView.LeftToRight)
         self.listViewProjects.setProperty("isWrapping", True)
         self.listViewProjects.setResizeMode(QtWidgets.QListView.Adjust)
+        self.listViewProjects.setWordWrap(True)
+        self.listViewProjects.setSelectionRectVisible(True)
         self.listViewProjects.setObjectName("listViewProjects")
         self.horizontalLayout.addWidget(self.listViewProjects)
         spacerItem3 = QtWidgets.QSpacerItem(125, 20, QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Minimum)
@@ -102,7 +105,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.progressBar)
         MainWindow.setCentralWidget(self.widget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
         self.menubar.setObjectName("menubar")
         self.menu = QtWidgets.QMenu(self.menubar)
         self.menu.setObjectName("menu")

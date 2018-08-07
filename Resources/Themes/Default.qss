@@ -103,6 +103,21 @@ TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
 #listViewProjects {
     outline: 0px;
 }
+/*item的悬停和选中效果*/
+#listViewProjects::item:hover {
+    /*从上到下的透明白色到黑色渐变*/
+    border-radius: 6px;
+    background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.8, stop:0 rgba(0, 0, 0, 100), stop:1 rgba(255, 255, 255, 0));
+}
+#listViewProjects::item:selected {
+    border-radius: 6px;
+    border: 2px solid rgb(32, 155, 227);
+}
+#listViewProjects::item:selected:!active {
+    border-radius: 6px;
+    border: 2px solid rgb(32, 155, 227);
+}
+
 /*我的项目、创建项目的面板背景*/
 #widgetMyProject {
     background-color: rgb(44, 45, 46);
@@ -143,6 +158,10 @@ TitleWidget > QPushButton:pressed, BaseTitleWidget > QPushButton:pressed {
 
 /*项目主页每个item的样式*/
 ProjectItemWidget {
+    font-family: "qtskin";
+    font-size: 80px;
+    border-radius: 6px;
+    margin: 2px; /*让控件整体往内部缩进2px*/
     background-color: rgb(73, 75, 77);
 }
 #buttonDelete {
@@ -161,13 +180,6 @@ ProjectItemWidget {
 }
 #buttonDelete:pressed {
     background-color: rgb(14, 15, 15);
-}
-#labelEmpty {
-    font-family: "qtskin";
-    font-size: 100px;
-    margin: 12px;
-    border: 2px dashed rgb(165, 165, 165);
-    border-radius: 4px;
 }
 /*项目Item底部黑色*/
 ProjectItemWidget > #widgetBottom {
