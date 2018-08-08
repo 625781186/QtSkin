@@ -3,7 +3,8 @@
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
 
-from UiFiles.Ui_LoginDialog import Ui_LoginDialog
+from UiFiles.Ui_CreateProjectDialog import Ui_CreateProjectDialog
+from Utils import Constant
 from Widgets.Dialogs.Dialog import Dialog
 
 
@@ -11,7 +12,7 @@ from Widgets.Dialogs.Dialog import Dialog
 # author: Irony
 # site: https://github.com/892768447
 # email: 892768447@qq.com
-# file: Widgets.Dialogs.LoginDialog
+# file: Widgets.Dialogs.CreateProjectDialog
 # description:
 __Author__ = """By: Irony
 QQ: 892768447
@@ -20,12 +21,12 @@ __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
 
-class LoginDialog(QDialog, Ui_LoginDialog, Dialog):
+class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
 
     Icon = ''  # 叹号字
 
     def __init__(self, *args, **kwargs):
-        super(LoginDialog, self).__init__(*args, **kwargs)
+        super(CreateProjectDialog, self).__init__(*args, **kwargs)
         self.setupUi(self)
         self.dialogWidgetBg.setContentsMargins(1, 1, 1, 1)
         self.BorderWidget = self.dialogWidgetBg  # 边框闪烁
@@ -35,20 +36,18 @@ class LoginDialog(QDialog, Ui_LoginDialog, Dialog):
         self.widgetTitle.windowClosed.connect(self.reject)
 
     @pyqtSlot()
-    def on_buttonLogin_clicked(self):
-        # 登录点击
-        username = self.editUsername.text().strip()
-        password = self.editPassword.text().strip()
-        if not username and not password:
-            self.showErrorMsg(self.tr('Incorrect username or password'))
+    def on_buttonCreate_clicked(self):
+        # 创建项目按钮
+        name = self.projectName
+        if not name:
+            self.showErrorMsg(self.tr('Incorrect project name'))
             return
-        if not username:
-            self.showErrorMsg(self.tr('Incorrect username'))
-            return
-        if not password:
-            self.showErrorMsg(self.tr('Incorrect password'))
-            return
+        # 判断项目是否存在
         self.labelNotice.setText('')
+
+    @property
+    def projectName(self):
+        return self.editProjectName.text().strip()
 
     def showErrorMsg(self, msg):
         """
@@ -64,11 +63,12 @@ if __name__ == '__main__':
     from PyQt5.QtWidgets import QApplication, QWidget
     from PyQt5.QtGui import QFontDatabase
     from Utils.Tools import readData
+    Constant.BaseDir = '../../'
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../../Resources/Themes/Default.qss'))
     QFontDatabase.addApplicationFont('../../Resources/Fonts/qtskin.ttf')
     ww = QWidget()
     ww.show()
-    w = LoginDialog(ww)
+    w = CreateProjectDialog(ww)
     w.exec_()
     sys.exit(app.exec_())

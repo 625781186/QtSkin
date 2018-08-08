@@ -105,17 +105,17 @@ TitleWidget > #lineLogin {
     margin-bottom: 8px;
 }
 
-/*登录对话框*/
-LoginDialog > #loginWidgetBg {
+/*弹出对话框背景*/
+#dialogWidgetBg {
     border-radius: 4px;
     background-color: rgb(44, 45, 46);
 }
 /*激活状态*/
-#loginWidgetBg[active="true"] {
+#dialogWidgetBg[active="true"] {
     border: 1px solid rgba(36, 175, 255, 150);
 }
 /*非激活状态*/
-#loginWidgetBg[active="false"] {
+#dialogWidgetBg[active="false"] {
     border: 1px solid transparent; /*透明边框*/
 }
 #labelHead {
@@ -127,7 +127,7 @@ LoginDialog > #loginWidgetBg {
     font-family: "qtskin";
     color: red;
 }
-#editUsername, #editPassword {
+#editUsername, #editPassword, #editProjectName {
     padding: 0px 0px 0px 8px;  /*上右下左*/
     border-radius: 4px;
     border: 1px solid transparent; /*透明边框*/
@@ -135,7 +135,7 @@ LoginDialog > #loginWidgetBg {
     selection-color: black; /*选中文字的颜色*/
     selection-background-color: rgb(181, 213, 255); /*选中文字背景色*/
 }
-#editUsername:focus, #editPassword:focus {
+#editUsername:focus, #editPassword:focus, #editProjectName:focus {
     border-radius: 4px;
     border: 1px solid rgb(36, 175, 255);
 }
@@ -146,15 +146,15 @@ QLineEdit {
     padding: 0px 8px;  /*上下0 左右8*/
 }
 
-#loginWidgetEdit > #buttonLogin {
+#loginWidgetEdit > #buttonLogin, #buttonCreate {
     color: white;
     border-radius: 4px;
     background-color: rgb(36, 175, 255);
 }
-#loginWidgetEdit > #buttonLogin:hover {
+#loginWidgetEdit > #buttonLogin:hover, #buttonCreate:hover {
     background-color: rgb(58, 183, 255);
 }
-#loginWidgetEdit > #buttonLogin:pressed {
+#loginWidgetEdit > #buttonLogin:pressed, #buttonCreate:pressed {
     background-color: rgb(34, 168, 245);
 }
 
