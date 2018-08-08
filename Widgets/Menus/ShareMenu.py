@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QMenu
 # author: Irony
 # site: https://github.com/892768447
 # email: 892768447@qq.com
-# file: Widgets.ShareMenu
+# file: Widgets.Menus.ShareMenu
 # description: 底部分享菜单
 __Author__ = """By: Irony
 QQ: 892768447

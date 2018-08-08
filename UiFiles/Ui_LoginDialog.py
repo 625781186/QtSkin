@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\LoginWidget.ui'
+# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\LoginDialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.10.1
 #
@@ -8,15 +8,15 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_LoginWidget(object):
-    def setupUi(self, LoginWidget):
-        LoginWidget.setObjectName("LoginWidget")
-        LoginWidget.resize(320, 410)
-        self.horizontalLayout = QtWidgets.QHBoxLayout(LoginWidget)
+class Ui_LoginDialog(object):
+    def setupUi(self, LoginDialog):
+        LoginDialog.setObjectName("LoginDialog")
+        LoginDialog.resize(320, 410)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(LoginDialog)
         self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.loginWidgetBg = QtWidgets.QWidget(LoginWidget)
+        self.loginWidgetBg = QtWidgets.QWidget(LoginDialog)
         self.loginWidgetBg.setMinimumSize(QtCore.QSize(310, 400))
         self.loginWidgetBg.setMaximumSize(QtCore.QSize(310, 400))
         self.loginWidgetBg.setProperty("active", True)
@@ -90,27 +90,27 @@ class Ui_LoginWidget(object):
         self.gridLayout.addWidget(self.loginWidgetBottom, 6, 0, 1, 3)
         self.horizontalLayout.addWidget(self.loginWidgetBg)
 
-        self.retranslateUi(LoginWidget)
-        QtCore.QMetaObject.connectSlotsByName(LoginWidget)
+        self.retranslateUi(LoginDialog)
+        QtCore.QMetaObject.connectSlotsByName(LoginDialog)
 
-    def retranslateUi(self, LoginWidget):
+    def retranslateUi(self, LoginDialog):
         _translate = QtCore.QCoreApplication.translate
-        LoginWidget.setWindowTitle(_translate("LoginWidget", "Login"))
-        self.labelHead.setText(_translate("LoginWidget", ""))
-        self.editUsername.setPlaceholderText(_translate("LoginWidget", "Github账号"))
-        self.editPassword.setPlaceholderText(_translate("LoginWidget", "密码"))
-        self.buttonLogin.setText(_translate("LoginWidget", "登录"))
-        self.labelRegister.setText(_translate("LoginWidget", "<html><head/><body><p><a href=\"https://github.com/join?source=login\"><span style=\" text-decoration: none; color:#24afff;\">立即注册</span></a></p></body></html>"))
-        self.labelForgot.setText(_translate("LoginWidget", "<html><head/><body><p><a href=\"https://github.com/password_reset\"><span style=\" text-decoration: none; color:#787878;\">忘记密码?</span></a></p></body></html>"))
+        LoginDialog.setWindowTitle(_translate("LoginDialog", "Login"))
+        self.labelHead.setText(_translate("LoginDialog", ""))
+        self.editUsername.setPlaceholderText(_translate("LoginDialog", "Github账号"))
+        self.editPassword.setPlaceholderText(_translate("LoginDialog", "密码"))
+        self.buttonLogin.setText(_translate("LoginDialog", "登录"))
+        self.labelRegister.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://github.com/join?source=login\"><span style=\" text-decoration: none; color:#24afff;\">立即注册</span></a></p></body></html>"))
+        self.labelForgot.setText(_translate("LoginDialog", "<html><head/><body><p><a href=\"https://github.com/password_reset\"><span style=\" text-decoration: none; color:#787878;\">忘记密码?</span></a></p></body></html>"))
 
 from Widgets.BaseTitleWidget import BaseTitleWidget
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    LoginWidget = QtWidgets.QWidget()
-    ui = Ui_LoginWidget()
-    ui.setupUi(LoginWidget)
-    LoginWidget.show()
+    LoginDialog = QtWidgets.QDialog()
+    ui = Ui_LoginDialog()
+    ui.setupUi(LoginDialog)
+    LoginDialog.show()
     sys.exit(app.exec_())
 

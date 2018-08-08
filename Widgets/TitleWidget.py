@@ -14,7 +14,7 @@ from PyQt5.QtCore import pyqtSignal, QPoint, Qt, pyqtSlot
 from PyQt5.QtWidgets import QWidget
 
 from UiFiles.Ui_TitleWidget import Ui_TitleWidget
-from Widgets.LoginWidget import LoginWidget
+from Widgets.Dialogs.LoginDialog import LoginDialog
 
 
 __Author__ = """By: Irony
@@ -38,7 +38,7 @@ class TitleWidget(QWidget, Ui_TitleWidget):
     @pyqtSlot()
     def on_buttonLogin_clicked(self):
         #登录按钮
-        dialog = LoginWidget(self)
+        dialog = LoginDialog(self)
         dialog.exec_()
 
     def mouseDoubleClickEvent(self, event):

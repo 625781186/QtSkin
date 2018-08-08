@@ -106,7 +106,7 @@ TitleWidget > #lineLogin {
 }
 
 /*登录对话框*/
-LoginWidget > #loginWidgetBg {
+LoginDialog > #loginWidgetBg {
     border-radius: 4px;
     background-color: rgb(44, 45, 46);
 }

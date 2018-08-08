@@ -21,7 +21,7 @@ from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
 from Core.SortFilterProxyModel import SortFilterProxyModel
 from UiFiles.Ui_MainWindow import Ui_MainWindow
 from Widgets.Items.ProjectItemWidget import ProjectItemWidget
-from Widgets.ShareMenu import ShareMenu
+from Widgets.Menus.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget
 
 
@@ -89,7 +89,7 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.listViewProjects.setVerticalScrollBar(self.rightScrollBar)
         # 由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
         self.horizontalLayout.addWidget(self.rightScrollBar)
-        self.listViewProjects.setSpacing(15)
+        self.listViewProjects.setSpacing(15)  # item之间的间隔
         # 两个排序按钮放入一个组中
         btnGroup = QButtonGroup(self)
         btnGroup.addButton(self.buttonSortTime)
