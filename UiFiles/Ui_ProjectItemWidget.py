@@ -30,6 +30,8 @@ class Ui_ProjectItemWidget(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem)
         self.buttonDelete = QtWidgets.QPushButton(self.widgetTool)
+        self.buttonDelete.setMinimumSize(QtCore.QSize(30, 30))
+        self.buttonDelete.setMaximumSize(QtCore.QSize(30, 30))
         self.buttonDelete.setObjectName("buttonDelete")
         self.horizontalLayout_3.addWidget(self.buttonDelete)
         self.horizontalLayout.addWidget(self.widgetTool)

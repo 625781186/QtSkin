@@ -47,11 +47,9 @@
 
 /*标题栏*/
 TitleWidget {
-    min-height: 40px;
     background-color: rgb(54, 55, 56);
 }
 BaseTitleWidget {
-    min-height: 28px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background-color: rgb(54, 55, 56);
@@ -62,18 +60,12 @@ TitleWidget > #labelTitle, BaseTitleWidget > #labelTitle {
 }
 /*标题栏右侧工具按钮*/
 TitleWidget > QPushButton {
-    min-height: 40px;
-    max-width: 36px;
     color: rgb(165, 165, 165);
     border: none;
     font-size: 12pt;
     font-family: "Webdings";
 }
 BaseTitleWidget > QPushButton {
-    min-width: 28px;
-    max-width: 28px;
-    min-height: 28px;
-    max-height: 28px;
     color: rgb(165, 165, 165);
     border: none;
     border-top-right-radius: 4px;
@@ -96,7 +88,6 @@ TitleWidget > #buttonClose:pressed, BaseTitleWidget > #buttonClose:pressed {
 }
 /*标题栏登录按钮*/
 TitleWidget > #buttonLogin {
-    max-width: 60px;
     color: rgb(36, 175, 255);
     font-family: "qtskin";
 }
@@ -121,7 +112,7 @@ LoginWidget > #loginWidgetBg {
 }
 /*激活状态*/
 #loginWidgetBg[active="true"] {
-    border: 1px solid rgb(36, 175, 255);
+    border: 1px solid rgba(36, 175, 255, 150);
 }
 /*非激活状态*/
 #loginWidgetBg[active="false"] {
@@ -192,6 +183,8 @@ QLineEdit {
 
 /*我的项目、创建项目的面板背景*/
 #widgetMyProject {
+    border-top: 1px solid rgb(40, 41, 41);
+    border-bottom: 1px solid rgb(28, 28, 29);
     background-color: rgb(44, 45, 46);
 }
 /*创建项目按钮*/
@@ -237,10 +230,6 @@ ProjectItemWidget {
     background-color: rgb(73, 75, 77);
 }
 #buttonDelete {
-    min-width: 30px;
-    max-width: 30px;
-    min-height: 30px;
-    max-height: 30px;
     font-family: "qtskin";
     font-size: 20px;
     border: none;
@@ -318,10 +307,10 @@ QStatusBar::item {
 
 /*底部状态栏右下角按钮*/
 #buttonHome, #buttonShare {
-    min-width: 24px;
-    max-width: 24px;
-    min-height: 24px;
-    max-height: 24px;
+    min-width: 25px;
+    max-width: 25px;
+    min-height: 25px;
+    max-height: 25px;
     border: none;
     font-weight: bold;
     font-family: "qtskin";

@@ -10,6 +10,8 @@ Created on 2018年7月16日
 @description: 
 """
 from datetime import datetime
+from random import choice
+import string
 import webbrowser
 
 from PyQt5.QtCore import Qt, pyqtSlot
@@ -41,19 +43,37 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.initProjects()
         self.initStatusbar()
 
+    def randomChar(self, y):
+        # 返回随机字符串
+        return ''.join(choice(string.ascii_letters) for _ in range(y))
+
+    def on_buttonSortTime_toggled(self, toggled):
+        # 按时间排序
+        if toggled:
+            self.filterProjectModel.sort(0, Qt.DescendingOrder)
+
+    def on_buttonSortAz_toggled(self, toggled):
+        # 按字母排序
+        if toggled:
+            self.filterProjectModel.sort(0, Qt.AscendingOrder)
+
     @pyqtSlot()
     def on_buttonAddProject_clicked(self):
         """添加项目"""
-        name = 'name-'
-        time = datetime.now().strftime('%Y/%m/%d')
-        item = QStandardItem(name + time)
+        name = '%s-' % self.randomChar(4)
+        time = datetime.now()
+        item = QStandardItem(name + time.strftime('%Y/%m/%d %H:%M:%S'))
         self.projectModel.appendRow(item)
         index = self.filterProjectModel.mapFromSource(item.index())
         widget = ProjectItemWidget(self.listViewProjects)
         widget.setName(name)
-        widget.setTime(time)
+        widget.setTime(time.strftime('%Y/%m/%d %H:%M:%S'))
         item.setSizeHint(widget.size())
         self.listViewProjects.setIndexWidget(index, widget)
+        self.listViewProjects.setCurrentIndex(index)  # 默认选中
+        # 排序
+        self.filterProjectModel.sort(
+            0, Qt.AscendingOrder if self.buttonSortAz.isChecked() else Qt.DescendingOrder)
 
     def initTitleBar(self):
         # 在菜单中添加自定义的标题栏

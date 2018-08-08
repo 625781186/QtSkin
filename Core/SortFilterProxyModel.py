@@ -28,7 +28,7 @@ class SortFilterProxyModel(QSortFilterProxyModel):
             # 按照时间倒序排序
             leftData = leftData.split('-')[-1]
             rightData = rightData.split('-')[-1]
-            return leftData < rightData
+            return leftData > rightData
 #         elif self.sortOrder() == Qt.AscendingOrder:
 #             #按照名字升序排序
 #             leftData = leftData.split('-')[0]

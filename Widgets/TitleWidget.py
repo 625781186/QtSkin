@@ -10,10 +10,11 @@ Created on 2018年7月16日
 @description: 
 """
 
-from PyQt5.QtCore import pyqtSignal, QPoint, Qt
+from PyQt5.QtCore import pyqtSignal, QPoint, Qt, pyqtSlot
 from PyQt5.QtWidgets import QWidget
 
 from UiFiles.Ui_TitleWidget import Ui_TitleWidget
+from Widgets.LoginWidget import LoginWidget
 
 
 __Author__ = """By: Irony
@@ -33,6 +34,12 @@ class TitleWidget(QWidget, Ui_TitleWidget):
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.prePos = None
+    
+    @pyqtSlot()
+    def on_buttonLogin_clicked(self):
+        #登录按钮
+        dialog = LoginWidget(self)
+        dialog.exec_()
 
     def mouseDoubleClickEvent(self, event):
         super(TitleWidget, self).mouseDoubleClickEvent(event)

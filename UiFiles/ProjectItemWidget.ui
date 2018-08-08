@@ -92,6 +92,18 @@
       </item>
       <item>
        <widget class="QPushButton" name="buttonDelete">
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="text">
          <string></string>
         </property>
