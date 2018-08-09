@@ -9,17 +9,20 @@ Created on 2018年7月16日
 @file: Widgets.Mainwindow
 @description: 
 """
-from datetime import datetime
-from random import choice
-import string
+
+from pathlib import Path
 import webbrowser
 
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
+import yaml
 
 from UiFiles.Ui_MainWindow import Ui_MainWindow
+from Utils import Constant
 from Utils.SortFilterProxyModel import SortFilterProxyModel
+from Utils.Tools import log
+from Widgets.Dialogs.CreateProjectDialog import CreateProjectDialog
 from Widgets.Items.ProjectItemWidget import ProjectItemWidget
 from Widgets.Menus.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget
@@ -36,38 +39,41 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self, *args, **kwargs):
         super(Mainwindow, self).__init__(*args, **kwargs)
+        log.debug('')
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
 
         self.initTitleBar()
-        self.initProjects()
+        self.initProjectsUi()
         self.initStatusbar()
-
-    def randomChar(self, y):
-        # 返回随机字符串
-        return ''.join(choice(string.ascii_letters) for _ in range(y))
+        self.initProjects()
 
     def on_buttonSortTime_toggled(self, toggled):
         # 按时间排序
         if toggled:
+            log.debug('sort by time')
             self.filterProjectModel.sort(0, Qt.DescendingOrder)
 
     def on_buttonSortAz_toggled(self, toggled):
         # 按字母排序
         if toggled:
+            log.debug('sort by name')
             self.filterProjectModel.sort(0, Qt.AscendingOrder)
 
     @pyqtSlot()
     def on_buttonAddProject_clicked(self):
         """添加项目"""
-        name = '%s-' % self.randomChar(4)
-        time = datetime.now()
-        item = QStandardItem(name + time.strftime('%Y/%m/%d %H:%M:%S'))
+        log.debug('')
+        dialog = CreateProjectDialog(self)
+        if dialog.exec_() != CreateProjectDialog.Accepted:
+            log.debug('cancel create project')
+            return
+        log.debug('project info: %s' % str(dialog.project))
+        item = QStandardItem('{name} {time}'.format(**dialog.project))
         self.projectModel.appendRow(item)
         index = self.filterProjectModel.mapFromSource(item.index())
-        widget = ProjectItemWidget(self.listViewProjects)
-        widget.setName(name)
-        widget.setTime(time.strftime('%Y/%m/%d %H:%M:%S'))
+        widget = ProjectItemWidget(dialog.project, self.listViewProjects)
+        dialog.destory()
         item.setSizeHint(widget.size())
         self.listViewProjects.setIndexWidget(index, widget)
         self.listViewProjects.setCurrentIndex(index)  # 默认选中
@@ -76,6 +82,7 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
             0, Qt.AscendingOrder if self.buttonSortAz.isChecked() else Qt.DescendingOrder)
 
     def initTitleBar(self):
+        log.debug('')
         # 在菜单中添加自定义的标题栏
         layout = QHBoxLayout(self.menubar, spacing=0)
         layout.setContentsMargins(0, 0, 0, 0)
@@ -84,7 +91,8 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.titleWidget.windowMoved.connect(self.doMoveWindow)
         layout.addWidget(self.titleWidget)
 
-    def initProjects(self):
+    def initProjectsUi(self):
+        log.debug('')
         # 设置listViewProjects的代理滚动
         self.listViewProjects.setVerticalScrollBar(self.rightScrollBar)
         # 由于重新设置了列表的滚动条会被嵌入到QListWidget中,这里需要重新添加到布局中
@@ -103,6 +111,7 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
 
     def initStatusbar(self):
         # 底部状态栏
+        log.debug('')
         self.statusbar.addPermanentWidget(  # 主页按钮
             QPushButton('', self, objectName='buttonHome',
                         statusTip=self.tr('visit home page'),
@@ -115,6 +124,26 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         # 分享菜单
         self.shareMenu = ShareMenu(self.tr('Share'), self.buttonShare)
         self.buttonShare.clicked.connect(self.shareMenu.exec_)
+
+    def initProjects(self):
+        # 扫描文件并加载项目列表
+        log.debug('load projects')
+        for file in Path(os.path.abspath(os.path.join(Constant.BaseDir, 'Projects'))).rglob('*.project'):
+            try:
+                project = yaml.load(open(str(file)))
+                log.debug('project info: %s' % str(project))
+                item = QStandardItem('{name} {time}'.format(**project))
+                self.projectModel.appendRow(item)
+                index = self.filterProjectModel.mapFromSource(item.index())
+                widget = ProjectItemWidget(project, self.listViewProjects)
+                item.setSizeHint(widget.size())
+                self.listViewProjects.setIndexWidget(index, widget)
+                self.listViewProjects.setCurrentIndex(index)  # 默认选中
+                # 排序
+                self.filterProjectModel.sort(
+                    0, Qt.AscendingOrder if self.buttonSortAz.isChecked() else Qt.DescendingOrder)
+            except Exception as e:
+                log.error('load project {} error: {}'.format(file, e))
 
     def doVisitHome(self):
         # 访问主页
@@ -136,9 +165,15 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     import sys
+    import os
+    import cgitb
+    sys.excepthook = cgitb.Hook(1, None, 5, sys.stderr, 'text')
     from PyQt5.QtWidgets import QApplication
     from PyQt5.QtGui import QFontDatabase
-    from Utils.Tools import readData
+    from Utils.Tools import readData, initLog
+    initLog()
+    Constant.BaseDir = '..'
+    os.makedirs('../Projects', exist_ok=True)
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../Resources/Themes/Default.qss'))
     QFontDatabase.addApplicationFont('../Resources/Fonts/qtskin.ttf')

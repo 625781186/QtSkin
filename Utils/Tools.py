@@ -36,20 +36,19 @@ def readData(path):
     return data
 
 
-def initLog(name, file=None, level=logging.ERROR, formatter=None):
+def initLog(file=None, level=logging.DEBUG, formatter=None):
     formatter = formatter or logging.Formatter(
         '[%(asctime)s %(name)s %(module)s:%(funcName)s:%(lineno)s] %(levelname)-8s %(message)s'
         if level == logging.DEBUG else '[%(asctime)s %(name)s] %(levelname)-8s %(message)s')
 
-    logger = logging.getLogger(name)
+    logger = logging.getLogger('QtSkin')
     logger.setLevel(level)
 
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(formatter)
     logger.addHandler(stream_handler)
 
-    file = os.path.abspath(file)
-    if file:
+    if file and os.path.abspath(file):
         file_handler = logging.FileHandler(file, mode='w')
         file_handler.setFormatter(formatter)
         logger.addHandler(file_handler)

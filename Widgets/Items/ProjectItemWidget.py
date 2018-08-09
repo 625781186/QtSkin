@@ -10,7 +10,7 @@ Created on 2018年8月6日
 @description: 主页项目Item
 """
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QLabel
 
@@ -26,11 +26,23 @@ __Version__ = "Version 1.0"
 
 class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, project, *args, **kwargs):
         super(ProjectItemWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
         # 隐藏删除按钮
         self.buttonDelete.setVisible(False)
+        self._project = project
+        self.setName(project['name'])
+        self.setTime(project['time'].split('-')[0])
+
+    @property
+    def project(self):
+        return self._project
+
+    @pyqtSlot()
+    def on_buttonDelete_clicked(self):
+        # 删除项目
+        pass
 
     def setName(self, name):
         """
@@ -84,8 +96,7 @@ if __name__ == '__main__':
     from Utils.Tools import readData
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../../Resources/Themes/Default.qss'))
-    QFontDatabase.addApplicationFont('../../Resources/qtskin.ttf')
-    w = ProjectItemWidget()
+    QFontDatabase.addApplicationFont('../../Resources/Fonts/qtskin.ttf')
+    w = ProjectItemWidget({'name': 'name', 'time': '2018/8/9'})
     w.show()
-    w.setName('test').setTime('2017/08/06')
     sys.exit(app.exec_())

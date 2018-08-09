@@ -10,8 +10,12 @@ Created on 2018年8月5日
 """
 
 
+from datetime import datetime
+import os
+
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
+import yaml
 
 from UiFiles.Ui_CreateProjectDialog import Ui_CreateProjectDialog
 from Utils import Constant
@@ -38,20 +42,40 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
         self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
         self.widgetTitle.windowMoved.connect(self.doMoveWindow)
         self.widgetTitle.windowClosed.connect(self.reject)
+        self._project = {}
 
     @pyqtSlot()
     def on_buttonCreate_clicked(self):
         # 创建项目按钮
-        name = self.projectName
+        name = self.editProjectName.text().strip()
         if not name:
             self.showErrorMsg(self.tr('Incorrect project name'))
             return
-        # 判断项目是否存在
+
+        path = os.path.abspath(os.path.join(
+            Constant.BaseDir, 'Projects', name))
+        file = path + '.project'
+        # 判断文件是否存在
+        if os.path.isfile(file) and os.path.exists(file):
+            self.showErrorMsg(self.tr('Project have already exists'))
+            return
         self.labelNotice.setText('')
+        # 创建目录
+        os.makedirs(path, exist_ok=True)
+        # 创建项目配置文件
+        self._project['name'] = name
+        self._project['time'] = datetime.now().strftime('%Y/%m/%d-%H:%M:%S')
+        self._project['files'] = []
+        yaml.dump(self._project, open(file, 'w'))
+        self.accept()
 
     @property
-    def projectName(self):
-        return self.editProjectName.text().strip()
+    def project(self):
+        return self._project
+
+    def destory(self):
+        self.close()
+        self.deleteLater()
 
     def showErrorMsg(self, msg):
         """
@@ -67,7 +91,8 @@ if __name__ == '__main__':
     from PyQt5.QtWidgets import QApplication, QWidget
     from PyQt5.QtGui import QFontDatabase
     from Utils.Tools import readData
-    Constant.BaseDir = '../../'
+    Constant.BaseDir = '../..'
+    os.makedirs('../../Projects', exist_ok=True)
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../../Resources/Themes/Default.qss'))
     QFontDatabase.addApplicationFont('../../Resources/Fonts/qtskin.ttf')
