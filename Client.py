@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Created on 2018年8月2日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Client
-# description:
+"""
+Created on 2018年8月2日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Client
+@description:
+"""
 import sys
 
 from PyQt5.QtGui import QFontDatabase

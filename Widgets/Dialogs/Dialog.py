@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Created on 2018年8月8日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Core.Dialog
+@description:
+"""
+
 import ctypes.wintypes
 
 from PyQt5.QtWidgets import QDialog
 
 
-# Created on 2018年8月8日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Core.Dialog
-# description:
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""

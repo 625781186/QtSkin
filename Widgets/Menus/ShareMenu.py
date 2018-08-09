@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Created on 2018年8月4日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Widgets.Menus.ShareMenu
+@description: 底部分享菜单
+"""
+
 from PyQt5.QtCore import QPropertyAnimation, QPoint
 from PyQt5.QtGui import QCursor
 from PyQt5.QtWidgets import QMenu
 
 
-# Created on 2018年8月4日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Widgets.Menus.ShareMenu
-# description: 底部分享菜单
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""
@@ -35,7 +38,7 @@ class ShareMenu(QMenu):
     def shareToWx(self):
         pass
 
-    def fadeIn(self,sPos,ePos):
+    def fadeIn(self, sPos, ePos):
         # 进入动画
         self.fadeAnimation.stop()
         self.fadeAnimation.setStartValue(sPos)
@@ -44,10 +47,10 @@ class ShareMenu(QMenu):
 
     def exec_(self):
         size = self.sizeHint()
-        sPos = QCursor.pos()#鼠标位置
+        sPos = QCursor.pos()  # 鼠标位置
         sPos.setX(int(sPos.x() - size.width() / 2))
         sPos.setY(sPos.y() - size.height() - 25)
         # 25 是状态栏高度
-        ePos = QPoint(sPos.x(), sPos.y()-25)
+        ePos = QPoint(sPos.x(), sPos.y() - 25)
         self.fadeIn(sPos, ePos)
         super(ShareMenu, self).exec_(ePos)

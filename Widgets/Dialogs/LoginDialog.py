@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Created on 2018年8月5日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Widgets.Dialogs.LoginDialog
+@description:
+"""
+
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
 
@@ -7,12 +16,6 @@ from UiFiles.Ui_LoginDialog import Ui_LoginDialog
 from Widgets.Dialogs.Dialog import Dialog
 
 
-# Created on 2018年8月5日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Widgets.Dialogs.LoginDialog
-# description:
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""

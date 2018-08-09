@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Created on 2018年8月9日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Utils.Constant
-# description: 常量
+"""
+Created on 2018年8月9日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Utils.Constant
+@description: 常量
+"""
 
 __Author__ = """By: Irony
 QQ: 892768447

@@ -18,8 +18,8 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
 
-from Core.SortFilterProxyModel import SortFilterProxyModel
 from UiFiles.Ui_MainWindow import Ui_MainWindow
+from Utils.SortFilterProxyModel import SortFilterProxyModel
 from Widgets.Items.ProjectItemWidget import ProjectItemWidget
 from Widgets.Menus.ShareMenu import ShareMenu
 from Widgets.TitleWidget import TitleWidget

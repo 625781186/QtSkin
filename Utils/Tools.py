@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Created on 2018年7月16日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Utils.Tools
+@description:
+"""
+
 import logging
 import os
 
 from PyQt5.QtCore import QFile, QIODevice, QTextStream, QTextCodec
 
 
-# Created on 2018年7月16日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Utils.Tools
-# description:
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""

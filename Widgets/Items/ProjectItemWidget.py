@@ -7,7 +7,7 @@ Created on 2018年8月6日
 @site: https://github.com/892768447
 @email: 892768447@qq.com
 @file: Widgets.Items.ProjectItemWidget
-@description: 
+@description: 主页项目Item
 """
 
 from PyQt5.QtCore import Qt

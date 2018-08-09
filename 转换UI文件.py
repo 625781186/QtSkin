@@ -6,7 +6,7 @@ Created on 2018年3月29日
 @author: Irony
 @site: https://github.com/892768447
 @email: 892768447@qq.com
-@file: 翻译UI文件
+@file: 转换UI文件
 @description: 
 """
 

@@ -34,10 +34,10 @@ class TitleWidget(QWidget, Ui_TitleWidget):
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.prePos = None
-    
+
     @pyqtSlot()
     def on_buttonLogin_clicked(self):
-        #登录按钮
+        # 登录按钮
         dialog = LoginDialog(self)
         dialog.exec_()
 

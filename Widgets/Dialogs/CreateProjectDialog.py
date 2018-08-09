@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+Created on 2018年8月5日
+@author: Irony
+@site: https://github.com/892768447
+@email: 892768447@qq.com
+@file: Widgets.Dialogs.CreateProjectDialog
+@description: 创建项目对话框
+"""
+
+
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
 
@@ -8,12 +18,6 @@ from Utils import Constant
 from Widgets.Dialogs.Dialog import Dialog
 
 
-# Created on 2018年8月5日
-# author: Irony
-# site: https://github.com/892768447
-# email: 892768447@qq.com
-# file: Widgets.Dialogs.CreateProjectDialog
-# description:
 __Author__ = """By: Irony
 QQ: 892768447
 Email: 892768447@qq.com"""
