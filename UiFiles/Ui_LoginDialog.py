@@ -66,6 +66,7 @@ class Ui_LoginDialog(object):
         self.verticalLayout.addWidget(self.buttonLogin)
         self.gridLayout.addWidget(self.loginWidgetEdit, 4, 0, 1, 3)
         self.widgetTitle = BaseTitleWidget(self.dialogWidgetBg)
+        self.widgetTitle.setMinimumSize(QtCore.QSize(0, 28))
         self.widgetTitle.setMaximumSize(QtCore.QSize(16777215, 28))
         self.widgetTitle.setObjectName("widgetTitle")
         self.gridLayout.addWidget(self.widgetTitle, 0, 0, 1, 3)

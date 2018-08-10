@@ -118,6 +118,11 @@ TitleWidget > #lineLogin {
 #dialogWidgetBg[active="false"] {
     border: 1px solid transparent; /*透明边框*/
 }
+/*错误状态*/
+#dialogWidgetBg[active="error"] {
+    border: 1px solid rgba(255, 0, 0, 150);
+}
+
 #labelHead {
     font-size: 80px;
     font-family: "qtskin";
@@ -146,16 +151,35 @@ QLineEdit {
     padding: 0px 8px;  /*上下0 左右8*/
 }
 
-#loginWidgetEdit > #buttonLogin, #buttonCreate {
+/*登录按钮、创建项目按钮、对话框确定按钮*/
+#loginWidgetEdit > #buttonLogin, #buttonCreate, #buttonOk {
     color: white;
     border-radius: 4px;
     background-color: rgb(36, 175, 255);
 }
-#loginWidgetEdit > #buttonLogin:hover, #buttonCreate:hover {
+#loginWidgetEdit > #buttonLogin:hover, #buttonCreate:hover, #buttonOk:hover {
     background-color: rgb(58, 183, 255);
 }
-#loginWidgetEdit > #buttonLogin:pressed, #buttonCreate:pressed {
+#loginWidgetEdit > #buttonLogin:pressed, #buttonCreate:pressed, #buttonOk:pressed {
     background-color: rgb(34, 168, 245);
+}
+
+/*对话框内容文字颜色*/
+#labelMessage {
+    color: white;
+}
+
+/*对话框取消按钮*/
+#buttonCancel {
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(78, 79, 81);
+}
+#buttonCancel:hover {
+    background-color: rgb(98, 99, 101);
+}
+#buttonCancel:pressed {
+    background-color: rgb(73, 74, 76);
 }
 
 /*首页、我的项目页面*/

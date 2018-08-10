@@ -36,6 +36,12 @@ class BaseTitleWidget(QWidget, Ui_BaseTitleWidget):
         self.buttonClose.clicked.connect(self.windowClosed.emit)
         self.prePos = None
 
+    def setTitle(self, title):
+        """设置标题文字
+        :param title: 标题
+        """
+        self.labelTitle.setText(title)
+
     def mousePressEvent(self, event):
         super(BaseTitleWidget, self).mousePressEvent(event)
         if event.button() == Qt.LeftButton:
@@ -60,6 +66,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyleSheet(readData('../Resources/Themes/Default.qss'))
     w = BaseTitleWidget()
+    w.setTitle('title')
     w.show()
     w.windowMoved.connect(lambda pos: w.move(w.x() + pos.x(), w.y() + pos.y()))
     sys.exit(app.exec_())

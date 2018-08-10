@@ -37,8 +37,13 @@ class Dialog:
         """边框闪烁动画
         :param actived: 是否激活
         """
-        # 修改控件的自定义属性
-        self.BorderWidget.setProperty('active', actived)
+        if not actived:  # 未激活
+            self.BorderWidget.setProperty('active', False)
+        else:  # 激活
+            if self.property('active') == 'error':
+                self.BorderWidget.setProperty('active', 'error')
+            else:
+                self.BorderWidget.setProperty('active', True)
         # 刷新它的样式
         self.style().polish(self.BorderWidget)
 

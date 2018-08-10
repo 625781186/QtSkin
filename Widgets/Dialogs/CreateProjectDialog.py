@@ -73,8 +73,8 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
     def project(self):
         return self._project
 
-    def destory(self):
-        self.close()
+    def close(self):
+        super(CreateProjectDialog, self).close()
         self.deleteLater()
 
     def showErrorMsg(self, msg):
