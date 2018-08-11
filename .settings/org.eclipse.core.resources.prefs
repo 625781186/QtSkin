@@ -5,6 +5,7 @@ encoding//UiFiles/Ui_MessageDialog.py=utf-8
 encoding//UiFiles/Ui_ProjectItemWidget.py=utf-8
 encoding//UiFiles/Ui_TitleWidget.py=utf-8
 encoding//Utils/Constant.py=utf-8
+encoding//Utils/Project.py=utf-8
 encoding//Utils/SortFilterProxyModel.py=utf-8
 encoding//Utils/Tools.py=utf-8
 encoding//Widgets/BaseTitleWidget.py=utf-8

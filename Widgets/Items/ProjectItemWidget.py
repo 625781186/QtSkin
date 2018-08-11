@@ -10,6 +10,7 @@ Created on 2018年8月6日
 @description: 主页项目Item
 """
 
+from datetime import datetime
 import os
 import shutil
 
@@ -41,8 +42,10 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
         self.buttonDelete.setVisible(False)
         self._project = project
         self._index = index
-        self.setName(project['name'])
-        self.setTime(project['time'].split('-')[0])
+        self.setName(project.name)
+#         self.setTime(project.time.split('-')[0])
+        self.setTime(datetime.strptime(
+            project.time, '%Y/%m/%d-%H:%M:%S').strftime('%Y/%m/%d'))
 
     @property
     def project(self):
@@ -57,13 +60,13 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
         # 删除项目
         if MessageDialog.question(
             self,
-            self.tr('Delete "{}" project?').format(self._project['name']),
+            self.tr('Delete "{}" project?').format(self._project.name),
             self.tr('Delete operation cannot be resumed.')
         ) != MessageDialog.Accepted:
             return
         try:
             dirPath = os.path.abspath(os.path.join(
-                Constant.BaseDir, 'Projects', self._project['name']))
+                Constant.BaseDir, 'Projects', self._project.name))
             # 删除项目文件
             os.unlink(dirPath + '.project')
             # 删除目录

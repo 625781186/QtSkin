@@ -8,17 +8,14 @@ Created on 2018年8月5日
 @file: Widgets.Dialogs.CreateProjectDialog
 @description: 创建项目对话框
 """
-
-
-from datetime import datetime
 import os
 
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtWidgets import QDialog
-import yaml
 
 from UiFiles.Ui_CreateProjectDialog import Ui_CreateProjectDialog
 from Utils import Constant
+from Utils.Project import Project
 from Widgets.Dialogs.Dialog import Dialog
 
 
@@ -42,7 +39,7 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
         self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
         self.widgetTitle.windowMoved.connect(self.doMoveWindow)
         self.widgetTitle.windowClosed.connect(self.reject)
-        self._project = {}
+        self._project = None
 
     @pyqtSlot()
     def on_buttonCreate_clicked(self):
@@ -52,21 +49,12 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
             self.showErrorMsg(self.tr('Incorrect project name'))
             return
 
-        path = os.path.abspath(os.path.join(
-            Constant.BaseDir, 'Projects', name))
-        file = path + '.project'
-        # 判断文件是否存在
-        if os.path.isfile(file) and os.path.exists(file):
+        self._project = Project(name)
+        if not self._project.create():
             self.showErrorMsg(self.tr('Project have already exists'))
             return
+
         self.labelNotice.setText('')
-        # 创建目录
-        os.makedirs(path, exist_ok=True)
-        # 创建项目配置文件
-        self._project['name'] = name
-        self._project['time'] = datetime.now().strftime('%Y/%m/%d-%H:%M:%S')
-        self._project['files'] = []
-        yaml.dump(self._project, open(file, 'w'))
         self.accept()
 
     @property

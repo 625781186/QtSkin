@@ -20,6 +20,7 @@ import yaml
 
 from UiFiles.Ui_MainWindow import Ui_MainWindow
 from Utils import Constant
+from Utils.Project import Project
 from Utils.SortFilterProxyModel import SortFilterProxyModel
 from Utils.Tools import log
 from Widgets.Dialogs.CreateProjectDialog import CreateProjectDialog
@@ -69,7 +70,8 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
             log.debug('cancel create project')
             return
         log.debug('project info: %s' % str(dialog.project))
-        item = QStandardItem('{name} {time}'.format(**dialog.project))
+        item = QStandardItem('{} {}'.format(
+            dialog.project.name, dialog.project.time))
         self.projectModel.appendRow(item)
         index = self.filterProjectModel.mapFromSource(item.index())
         widget = ProjectItemWidget(
@@ -132,9 +134,12 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         log.debug('load projects')
         for file in Path(os.path.abspath(os.path.join(Constant.BaseDir, 'Projects'))).rglob('*.project'):
             try:
-                project = yaml.load(open(str(file)))
-                log.debug('project info: %s' % str(project))
-                item = QStandardItem('{name} {time}'.format(**project))
+                project = Project(file.name)
+                if not project.load():  # 加载失败跳过
+                    continue
+                log.debug('project info: %s' % project)
+                item = QStandardItem('{} {}'.format(
+                    project.name, project.time))
                 self.projectModel.appendRow(item)
                 index = self.filterProjectModel.mapFromSource(item.index())
                 widget = ProjectItemWidget(project, self.listViewProjects)
