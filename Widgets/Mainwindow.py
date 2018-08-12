@@ -16,7 +16,6 @@ import webbrowser
 from PyQt5.QtCore import Qt, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
-import yaml
 
 from UiFiles.Ui_MainWindow import Ui_MainWindow
 from Utils import Constant
@@ -43,6 +42,8 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         log.debug('')
         self.setupUi(self)
         self.setAttribute(Qt.WA_StyledBackground, True)
+        # 隐藏进度条
+        self.progressBar.setVisible(False)
 
         self.initTitleBar()
         self.initProjectsUi()
@@ -132,10 +133,17 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
     def initProjects(self):
         # 扫描文件并加载项目列表
         log.debug('load projects')
-        for file in Path(os.path.abspath(os.path.join(Constant.BaseDir, 'Projects'))).rglob('*.project'):
+        files = list(Path(os.path.abspath(os.path.join(
+            Constant.BaseDir, 'Projects'))).rglob('*.project'))
+        log.debug('files: %s' % files)
+        if not files:
+            return
+        self.progressBar.setVisible(False)
+        self.progressBar.setRange(0, len(files))  # 进度条范围
+        for i, file in enumerate(files):
             try:
                 project = Project(file.name)
-                if not project.load():  # 加载失败跳过
+                if project.load() != None:  # 加载失败跳过
                     continue
                 log.debug('project info: %s' % project)
                 item = QStandardItem('{} {}'.format(
@@ -151,6 +159,10 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
                     0, Qt.AscendingOrder if self.buttonSortAz.isChecked() else Qt.DescendingOrder)
             except Exception as e:
                 log.error('load project {} error: {}'.format(file, e))
+            self.progressBar.setValue(i + 1)
+
+        self.progressBar.setVisible(False)
+        self.progressBar.setRange(-1, 0)
 
     def doVisitHome(self):
         # 访问主页
