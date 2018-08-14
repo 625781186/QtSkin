@@ -11,16 +11,12 @@ Created on 2018年8月6日
 """
 
 from datetime import datetime
-import os
-import shutil
 
-from PyQt5.QtCore import Qt, pyqtSlot, pyqtSignal, QModelIndex
-from PyQt5.QtGui import QPainter
+from PyQt5.QtCore import Qt, pyqtSlot, pyqtSignal
+from PyQt5.QtGui import QPainter, QStandardItem
 from PyQt5.QtWidgets import QLabel
 
 from UiFiles.Ui_ProjectItemWidget import Ui_ProjectItemWidget
-from Utils import Constant
-from Utils.Tools import log
 from Widgets.Dialogs.MessageDialog import MessageDialog
 
 
@@ -33,15 +29,15 @@ __Version__ = "Version 1.0"
 
 class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
 
-    itemDeleted = pyqtSignal(QModelIndex)
+    itemDeleted = pyqtSignal(QStandardItem)
 
-    def __init__(self, project, index, *args, **kwargs):
+    def __init__(self, project, item, *args, **kwargs):
         super(ProjectItemWidget, self).__init__(*args, **kwargs)
         self.setupUi(self)
         # 隐藏删除按钮
         self.buttonDelete.setVisible(False)
         self._project = project
-        self._index = index
+        self._item = item
         self.setName(project.name)
 #         self.setTime(project.time.split('-')[0])
         self.setTime(datetime.strptime(
@@ -52,8 +48,8 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
         return self._project
 
     @property
-    def index(self):
-        return self._index
+    def item(self):
+        return self._item
 
     @pyqtSlot()
     def on_buttonDelete_clicked(self):
@@ -64,17 +60,13 @@ class ProjectItemWidget(QLabel, Ui_ProjectItemWidget):
             self.tr('Delete operation cannot be resumed.')
         ) != MessageDialog.Accepted:
             return
-        try:
-            dirPath = os.path.abspath(os.path.join(
-                Constant.BaseDir, 'Projects', self._project.name))
-            # 删除项目文件
-            os.unlink(dirPath + '.project')
-            # 删除目录
-            shutil.rmtree(dirPath)
-            self.itemDeleted.emit(self._index)
-        except Exception as e:
-            log.error(str(e))
-            MessageDialog.error(self, self.tr('Error'), str(e.args))
+
+        # 删除项目的所有文件
+        ret = self._project.delete()
+        if ret:  # 报错
+            MessageDialog.error(self, self.tr('Error'), ret)
+        # 不管成功与否都要删除item
+        self.itemDeleted.emit(self._item)
 
     def setName(self, name):
         """

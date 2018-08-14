@@ -76,7 +76,7 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.projectModel.appendRow(item)
         index = self.filterProjectModel.mapFromSource(item.index())
         widget = ProjectItemWidget(
-            dialog.project, index, self.listViewProjects)
+            dialog.project, item, self.listViewProjects)
         widget.itemDeleted.connect(self.doProjectItemDelete)
         dialog.close()
         item.setSizeHint(widget.size())
@@ -150,7 +150,9 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
                     project.name, project.time))
                 self.projectModel.appendRow(item)
                 index = self.filterProjectModel.mapFromSource(item.index())
-                widget = ProjectItemWidget(project, self.listViewProjects)
+                widget = ProjectItemWidget(
+                    project, item, self.listViewProjects)
+                widget.itemDeleted.connect(self.doProjectItemDelete)
                 item.setSizeHint(widget.size())
                 self.listViewProjects.setIndexWidget(index, widget)
                 self.listViewProjects.setCurrentIndex(index)  # 默认选中
@@ -181,9 +183,9 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         else:
             self.showMaximized()
 
-    def doProjectItemDelete(self, index):
-        pass
-#         self.projectModel.removeRow(index.row(),index.parent())
+    def doProjectItemDelete(self, item):
+        # 删除item
+        self.projectModel.removeRow(item.index().row())
 
 
 if __name__ == '__main__':

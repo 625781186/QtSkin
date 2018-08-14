@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\TitleWidget.ui'
+# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\TitleWidget.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 

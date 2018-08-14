@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\MessageDialog.ui'
+# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\MessageDialog.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MessageDialog(object):
     def setupUi(self, MessageDialog):
         MessageDialog.setObjectName("MessageDialog")
-        MessageDialog.resize(360, 127)
+        MessageDialog.resize(360, 129)
         MessageDialog.setMinimumSize(QtCore.QSize(360, 0))
         MessageDialog.setMaximumSize(QtCore.QSize(360, 16777215))
         self.horizontalLayout = QtWidgets.QHBoxLayout(MessageDialog)
@@ -48,6 +48,7 @@ class Ui_MessageDialog(object):
         self.buttonOk = QtWidgets.QPushButton(self.dialogWidgetBg)
         self.buttonOk.setMinimumSize(QtCore.QSize(75, 25))
         self.buttonOk.setMaximumSize(QtCore.QSize(75, 25))
+        self.buttonOk.setDefault(True)
         self.buttonOk.setObjectName("buttonOk")
         self.horizontalLayout_2.addWidget(self.buttonOk)
         self.verticalLayout.addLayout(self.horizontalLayout_2)

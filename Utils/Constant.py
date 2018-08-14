@@ -16,4 +16,6 @@ Email: 892768447@qq.com"""
 __Copyright__ = 'Copyright (c) 2018 Irony'
 __Version__ = 1.0
 
+QssHeader = '/* QtSkin {} */'.format(__Version__).encode(encoding='utf_8')
+
 BaseDir = ''  # 目录

@@ -10,6 +10,7 @@
 /*上下左右边距*/
 #menubar::item {
     padding: 10px 10px;
+    background-color: rgb(54, 55, 56);
 }
 /*鼠标悬停背景颜色*/
 #menubar::item:hover {
@@ -47,7 +48,7 @@
 
 /*标题栏*/
 TitleWidget {
-    background-color: rgb(54, 55, 56);
+    /*background-color: rgb(54, 55, 56);*/
 }
 BaseTitleWidget {
     border-top-left-radius: 4px;

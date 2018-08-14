@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\MainWindow.ui'
+# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\MainWindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -162,6 +162,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.centralwidget.setCurrentIndex(0)
+        self.actionNew.triggered.connect(self.buttonAddProject.click)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

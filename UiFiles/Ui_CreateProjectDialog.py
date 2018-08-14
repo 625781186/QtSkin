@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\CreateProjectDialog.ui'
+# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\CreateProjectDialog.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -48,6 +48,7 @@ class Ui_CreateProjectDialog(object):
         self.buttonCreate = QtWidgets.QPushButton(self.widgetEdit)
         self.buttonCreate.setMinimumSize(QtCore.QSize(0, 36))
         self.buttonCreate.setMaximumSize(QtCore.QSize(16777215, 36))
+        self.buttonCreate.setDefault(True)
         self.buttonCreate.setObjectName("buttonCreate")
         self.verticalLayout.addWidget(self.buttonCreate)
         self.verticalLayout_2.addWidget(self.widgetEdit)

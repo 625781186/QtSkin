@@ -37,8 +37,10 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
         self.BorderWidget = self.dialogWidgetBg  # 边框闪烁
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         self.setWindowFlags(Qt.Dialog | Qt.FramelessWindowHint)
+        self.widgetTitle.setTitle(self.tr('Create Project'))
         self.widgetTitle.windowMoved.connect(self.doMoveWindow)
         self.widgetTitle.windowClosed.connect(self.reject)
+        self.editProjectName.setFocus()
         self._project = None
 
     @pyqtSlot()
@@ -46,11 +48,13 @@ class CreateProjectDialog(QDialog, Ui_CreateProjectDialog, Dialog):
         # 创建项目按钮
         name = self.editProjectName.text().strip()
         if not name:
+            self.editProjectName.setFocus()
             self.showErrorMsg(self.tr('Incorrect project name'))
             return
 
         self._project = Project(name)
         if not self._project.create():
+            self.editProjectName.setFocus()
             self.showErrorMsg(self.tr('Project have already exists'))
             return
 

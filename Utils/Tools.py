@@ -23,11 +23,11 @@ __Version__ = 1.0
 
 
 def readData(path):
-    """red file data"""
+    """read file data"""
     file = QFile(path)
     if not file.open(QIODevice.ReadOnly):
         log.warn('read file error')
-        return
+        return ''
     stream = QTextStream(file)
     stream.setCodec(QTextCodec.codecForName('UTF-8'))
     data = stream.readAll()
