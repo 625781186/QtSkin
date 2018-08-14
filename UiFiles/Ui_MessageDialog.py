@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'D:\Workspace\QtSkin\UiFiles\MessageDialog.ui'
+# Form implementation generated from reading ui file 'F:\Python\QtSkin\UiFiles\MessageDialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.5.1
 #
