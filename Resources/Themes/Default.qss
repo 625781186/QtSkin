@@ -207,7 +207,7 @@ QLineEdit {
 }
 
 /*我的项目、创建项目的面板背景*/
-#widgetMyProject {
+#widgetNavbar {
     border-top: 1px solid rgb(40, 41, 41);
     border-bottom: 1px solid rgb(28, 28, 29);
     background-color: rgb(44, 45, 46);
