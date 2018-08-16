@@ -10,6 +10,7 @@ Created on 2018年7月16日
 @description: 
 """
 
+import os
 from pathlib import Path
 import webbrowser
 
@@ -190,7 +191,6 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
 
 if __name__ == '__main__':
     import sys
-    import os
     import cgitb
     sys.excepthook = cgitb.Hook(1, None, 5, sys.stderr, 'text')
     from PyQt5.QtWidgets import QApplication

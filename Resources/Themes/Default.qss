@@ -184,24 +184,38 @@ QLineEdit {
 }
 
 /*首页、我的项目页面*/
-#widgetHome, #listViewProjects {
+#widgetHome, #widgetWorkspace, #listViewProjects, #listViewFiles, QSplitter {
     background-color: rgb(35, 35, 36);
 }
+
+QSplitter::handle {
+    background-color: rgb(35, 35, 36);
+}
+QSplitter::handle:horizontal {
+    width: 2px;
+}
+QSplitter::handle:vertical {
+    height: 2px;
+}
+QSplitter::handle:pressed {
+    background-color: rgb(52, 53, 57);
+}
+
 /*去掉item虚线边框*/
-#listViewProjects {
+#listViewProjects, #listViewFiles {
     outline: 0px;
 }
 /*item的悬停和选中效果*/
-#listViewProjects::item:hover {
+#listViewProjects::item:hover, #listViewFiles::item:hover {
     /*从上到下的透明白色到黑色渐变*/
     border-radius: 6px;
     background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0.8, stop:0 rgba(0, 0, 0, 100), stop:1 rgba(255, 255, 255, 0));
 }
-#listViewProjects::item:selected {
+#listViewProjects::item:selected, #listViewFiles::item:selected {
     border-radius: 6px;
     border: 2px solid rgb(32, 155, 227);
 }
-#listViewProjects::item:selected:!active {
+#listViewProjects::item:selected:!active, #listViewFiles::item:selected:!active {
     border-radius: 6px;
     border: 2px solid rgb(32, 155, 227);
 }
@@ -212,16 +226,18 @@ QLineEdit {
     border-bottom: 1px solid rgb(28, 28, 29);
     background-color: rgb(44, 45, 46);
 }
-/*创建项目按钮*/
-#buttonAddProject {
+/*创建项目, 添加文件按钮*/
+#buttonAddProject, #buttonAddFile {
     border: none;
     border-radius: 4px;
-    padding: 0px 10px;
     color: white;
     font-family: "qtskin";
     background-color: rgb(36, 175, 255);
 }
-#buttonAddProject:pressed {
+#buttonAddProject:hover, #buttonAddFile:hover {
+    background-color: rgb(58, 183, 255);
+}
+#buttonAddProject:pressed, #buttonAddFile:pressed {
     background-color: rgb(34, 168, 245);
 }
 
@@ -346,4 +362,24 @@ QStatusBar::item {
 }
 #buttonHome:pressed, #buttonShare:pressed {
     background-color: rgb(48, 49, 50);
+}
+
+/***********项目设计页面***********/
+
+/*我的项目,项目名按钮*/
+#buttonMyProject, #buttonCurrentProject {
+    font-family: "qtskin";
+    background-color: transparent;
+}
+#buttonMyProject:hover, #buttonCurrentProject:hover {
+    color: rgb(202, 202, 202);
+}
+#vLine {
+    color: rgb(90, 91, 92);
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+/*右侧设计面板*/
+#toolWidget {
+    background-color: rgb(44, 45, 46);
 }

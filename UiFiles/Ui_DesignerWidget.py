@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_DesignerWidget(object):
     def setupUi(self, DesignerWidget):
         DesignerWidget.setObjectName("DesignerWidget")
-        DesignerWidget.resize(657, 519)
+        DesignerWidget.resize(766, 617)
         self.verticalLayout = QtWidgets.QVBoxLayout(DesignerWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -35,8 +35,8 @@ class Ui_DesignerWidget(object):
         self.buttonCurrentProject.setObjectName("buttonCurrentProject")
         self.horizontalLayout_2.addWidget(self.buttonCurrentProject)
         self.vLine = QtWidgets.QFrame(self.widgetNavbar)
+        self.vLine.setFrameShadow(QtWidgets.QFrame.Plain)
         self.vLine.setFrameShape(QtWidgets.QFrame.VLine)
-        self.vLine.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.vLine.setObjectName("vLine")
         self.horizontalLayout_2.addWidget(self.vLine)
         self.labelCurrentProject = QtWidgets.QLabel(self.widgetNavbar)
@@ -51,10 +51,10 @@ class Ui_DesignerWidget(object):
         self.buttonAddFile.setObjectName("buttonAddFile")
         self.horizontalLayout_2.addWidget(self.buttonAddFile)
         self.verticalLayout.addWidget(self.widgetNavbar)
-        self.checkBox = QtWidgets.QSplitter(DesignerWidget)
-        self.checkBox.setOrientation(QtCore.Qt.Horizontal)
-        self.checkBox.setObjectName("checkBox")
-        self.widgetWorkspace = QtWidgets.QWidget(self.checkBox)
+        self.splitter = QtWidgets.QSplitter(DesignerWidget)
+        self.splitter.setOrientation(QtCore.Qt.Horizontal)
+        self.splitter.setObjectName("splitter")
+        self.widgetWorkspace = QtWidgets.QWidget(self.splitter)
         self.widgetWorkspace.setObjectName("widgetWorkspace")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widgetWorkspace)
         self.horizontalLayout.setContentsMargins(0, 15, 0, 0)
@@ -80,20 +80,13 @@ class Ui_DesignerWidget(object):
         self.rightScrollBar.setOrientation(QtCore.Qt.Vertical)
         self.rightScrollBar.setObjectName("rightScrollBar")
         self.horizontalLayout.addWidget(self.rightScrollBar)
-        self.toolBox = QtWidgets.QToolBox(self.checkBox)
-        self.toolBox.setObjectName("toolBox")
-        self.page = QtWidgets.QWidget()
-        self.page.setGeometry(QtCore.QRect(0, 0, 83, 427))
-        self.page.setObjectName("page")
-        self.toolBox.addItem(self.page, "")
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setGeometry(QtCore.QRect(0, 0, 83, 427))
-        self.page_2.setObjectName("page_2")
-        self.toolBox.addItem(self.page_2, "")
-        self.verticalLayout.addWidget(self.checkBox)
+        self.toolWidget = QtWidgets.QStackedWidget(self.splitter)
+        self.toolWidget.setMinimumSize(QtCore.QSize(160, 0))
+        self.toolWidget.setMaximumSize(QtCore.QSize(400, 16777215))
+        self.toolWidget.setObjectName("toolWidget")
+        self.verticalLayout.addWidget(self.splitter)
 
         self.retranslateUi(DesignerWidget)
-        self.toolBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(DesignerWidget)
 
     def retranslateUi(self, DesignerWidget):
@@ -102,8 +95,6 @@ class Ui_DesignerWidget(object):
         self.buttonMyProject.setText(_translate("DesignerWidget", " My Project"))
         self.buttonCurrentProject.setText(_translate("DesignerWidget", ""))
         self.buttonAddFile.setText(_translate("DesignerWidget", " Add"))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page), _translate("DesignerWidget", "Page 1"))
-        self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), _translate("DesignerWidget", "Page 2"))
 
 
 if __name__ == "__main__":

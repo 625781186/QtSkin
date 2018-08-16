@@ -10,6 +10,7 @@ encoding//Utils/Project.py=utf-8
 encoding//Utils/SortFilterProxyModel.py=utf-8
 encoding//Utils/Tools.py=utf-8
 encoding//Widgets/BaseTitleWidget.py=utf-8
+encoding//Widgets/DesignerWidget.py=utf-8
 encoding//Widgets/Dialogs/CreateProjectDialog.py=utf-8
 encoding//Widgets/Dialogs/Dialog.py=utf-8
 encoding//Widgets/Dialogs/LoginDialog.py=utf-8
