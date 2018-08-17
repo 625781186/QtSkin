@@ -86,6 +86,9 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         # 排序
         self.filterProjectModel.sort(
             0, Qt.AscendingOrder if self.buttonSortAz.isChecked() else Qt.DescendingOrder)
+    
+    def on_listViewProjects_doubleClicked(self,index):
+        print(self.filterProjectModel.mapToSource(index).row())
 
     def initTitleBar(self):
         log.debug('')
