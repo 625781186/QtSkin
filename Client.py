@@ -12,7 +12,9 @@ import sys
 from PyQt5.QtGui import QFontDatabase
 from PyQt5.QtWidgets import QApplication
 
+# be used for read QSS file
 from Utils.Tools import readData
+# Mainwindow
 from Widgets.Mainwindow import Mainwindow
 
 

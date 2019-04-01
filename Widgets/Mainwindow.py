@@ -9,6 +9,7 @@ Created on 2018年7月16日
 @file: Widgets.Mainwindow
 @description: 
 """
+<<<<<<< HEAD
 
 import os
 from pathlib import Path
@@ -26,6 +27,16 @@ from Utils.Tools import log
 from Widgets.Dialogs.CreateProjectDialog import CreateProjectDialog
 from Widgets.Items.ProjectItemWidget import ProjectItemWidget
 from Widgets.Menus.ShareMenu import ShareMenu
+=======
+import webbrowser 
+#import sys 
+#sys.path.append("...")
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMainWindow, QHBoxLayout, QPushButton, QButtonGroup
+
+from QtSkin.UiFiles.Ui_MainWindow import Ui_MainWindow
+from Widgets.ShareMenu import ShareMenu
+>>>>>>> ff98375d0bca219749730b0cf5103b78d251efe9
 from Widgets.TitleWidget import TitleWidget
 
 

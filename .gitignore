@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+/*.pydevproject
+/*.project
+/.settings
+/__init__.py
+/QtSkin.e4p
+/_eric6project
+/.settings
+/.project
+/.pydevproject

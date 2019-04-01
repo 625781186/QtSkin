@@ -12,8 +12,12 @@ Created on 2018年7月16日
 
 from PyQt5.QtCore import pyqtSignal, QPoint, Qt
 from PyQt5.QtWidgets import QWidget
+<<<<<<< HEAD
 
 from UiFiles.Ui_BaseTitleWidget import Ui_BaseTitleWidget
+=======
+from ..UiFiles.Ui_BaseTitleWidget import Ui_BaseTitleWidget
+>>>>>>> ff98375d0bca219749730b0cf5103b78d251efe9
 
 
 __Author__ = """By: Irony
